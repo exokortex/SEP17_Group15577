@@ -23,11 +23,11 @@ EnvironmentalEngine::EnvironmentalEngine()
 EnvironmentalCondition EnvironmentalEngine::createCondition()
 {
   // Initialize random seed
-  srand (time(NULL));
+  srand(time(NULL));
 
   // Generate and return random condition
   return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % 4),
-                                EnvironmentalCondition::Rank(rand() % 3),
+                                EnvironmentalCondition::Rank(rand() % 4),
                                 (float) (rand() % (350 - 100 + 1) + 100) / 10,
-                                EnvironmentalCondition::Rank(rand() % 3));
+                                EnvironmentalCondition::Rank(rand() % 4));
 }
