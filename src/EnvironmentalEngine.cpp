@@ -28,6 +28,6 @@ EnvironmentalCondition EnvironmentalEngine::createCondition()
   // Generate and return random condition
   return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % 4),
                                 EnvironmentalCondition::Rank(rand() % 3),
-                                (float) (rand() % (350 - 100) + 100) / 10,
+                                (float) (rand() % (350 - 100 + 1) + 100) / 10,
                                 EnvironmentalCondition::Rank(rand() % 3));
 }
