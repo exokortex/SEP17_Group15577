@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// EnvironmentalCondition.h
+// EnvironmentalEngine.h
 //
 // Group: Group 15577, study assistant Roman Walch
 //
@@ -12,10 +12,13 @@
 #ifndef ENVIRONMENTALENGINE_H_INCLUDED
 #define ENVIRONMENTALENGINE_H_INCLUDED
 
+#include "EnvironmentalCondition.h"
+
 class EnvironmentalEngine
 {
   public:
     EnvironmentalEngine();
+    EnvironmentalCondition createCondition();
 };
 
 #endif /* ENVIRONMENTALENGINE_H_INCLUDED */

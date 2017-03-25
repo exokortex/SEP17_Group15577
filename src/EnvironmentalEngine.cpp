@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// EnvironmentalCondition.h
+// EnvironmentalEngine.cpp
 //
 // Group: Group 15577, study assistant Roman Walch
 //
@@ -9,11 +9,25 @@
 //------------------------------------------------------------------------------
 //
 
+#include <stdlib.h>
+#include <time.h>
+
 #include "EnvironmentalEngine.h"
+#include "EnvironmentalCondition.h"
 
 EnvironmentalEngine::EnvironmentalEngine()
 {
   // TODO Auto-generated constructor stub
-  // test test2
 }
 
+EnvironmentalCondition EnvironmentalEngine::createCondition()
+{
+  // Initialize random seed
+  srand (time(NULL));
+
+  // Generate and return random condition
+  return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % 4),
+                                EnvironmentalCondition::Rank(rand() % 3),
+                                (float) (rand() % (350 - 100) + 100) / 10,
+                                EnvironmentalCondition::Rank(rand() % 3));
+}

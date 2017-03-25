@@ -11,8 +11,6 @@
 
 #include "EnvironmentalCondition.h"
 
-using namespace std;
-
 EnvironmentalCondition::EnvironmentalCondition(Cover sky_cover,
     Rank precipitation, float temperature, Rank wind)
 {
