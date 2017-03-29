@@ -15,16 +15,18 @@
 #include "EnvironmentalEngine.h"
 #include "EnvironmentalCondition.h"
 
+//------------------------------------------------------------------------------
 EnvironmentalEngine::EnvironmentalEngine()
 {
   // Initialize random seed
   srand(time(NULL));
 }
 
-EnvironmentalCondition EnvironmentalEngine::createCondition()
+//------------------------------------------------------------------------------
+EnvironmentalCondition *EnvironmentalEngine::createCondition()
 {
   // Generate and return random condition
-  return EnvironmentalCondition(
+  return new EnvironmentalCondition(
       EnvironmentalCondition::Cover(
           rand() % EnvironmentalCondition::COVER_SIZE),
       EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE),

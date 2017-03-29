@@ -17,10 +17,23 @@ class EnvironmentalCondition;
 class EnvironmentalEngine
 {
   public:
+    //--------------------------------------------------------------------------
+    // The precision of the random temperature (should be a power of 10)
+    // If set to 10 to the power of n, then n is the number of fractional
+    // digits.
+    //
     static const int TEMP_DECIMAL_PRECISION = 10;
 
+    //--------------------------------------------------------------------------
+    // Constructor
+    // Initializes the random function.
+    //
     EnvironmentalEngine();
-    EnvironmentalCondition createCondition();
+
+    //--------------------------------------------------------------------------
+    // Creates a new random Environmental condition.
+    //
+    EnvironmentalCondition *createCondition();
 };
 
 #endif /* ENVIRONMENTALENGINE_H_INCLUDED */
