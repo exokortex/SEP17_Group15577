@@ -18,6 +18,8 @@ class EnvironmentalCondition
     static const int TEMP_MIN = 10;
     static const int TEMP_MAX = 35;
     const float TEMP_UPPERTHIRD = (TEMP_MAX - TEMP_MIN) / 3.0f * 2.0f + TEMP_MIN;
+    static const int COVER_SIZE = 4;
+    static const int RANK_SIZE = 4;
 
     enum Cover
     {

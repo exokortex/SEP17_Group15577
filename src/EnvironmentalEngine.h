@@ -17,6 +17,8 @@ class EnvironmentalCondition;
 class EnvironmentalEngine
 {
   public:
+    static const int TEMP_DECIMAL_PRECISION = 10;
+
     EnvironmentalEngine();
     EnvironmentalCondition createCondition();
 };

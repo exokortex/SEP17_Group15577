@@ -17,7 +17,7 @@
 
 EnvironmentalEngine::EnvironmentalEngine()
 {
-  // TODO Auto-generated constructor stub
+  // empty constructor
 }
 
 EnvironmentalCondition EnvironmentalEngine::createCondition()
@@ -26,10 +26,10 @@ EnvironmentalCondition EnvironmentalEngine::createCondition()
   srand(time(NULL));
 
   // Generate and return random condition
-  return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % 4),
-                                EnvironmentalCondition::Rank(rand() % 4),
-                                static_cast<float>(rand() % (EnvironmentalCondition::TEMP_MAX * 10
-                                    - EnvironmentalCondition::TEMP_MIN * 10 + 1)
-                                    + EnvironmentalCondition::TEMP_MIN * 10) / 10,
-                                EnvironmentalCondition::Rank(rand() % 4));
+  return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % EnvironmentalCondition::COVER_SIZE),
+                                EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE),
+                                static_cast<float>(rand() % (EnvironmentalCondition::TEMP_MAX * TEMP_DECIMAL_PRECISION
+                                    - EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION + 1)
+                                    + EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION) / TEMP_DECIMAL_PRECISION,
+                                EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE));
 }
