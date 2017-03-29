@@ -17,7 +17,7 @@ class EnvironmentalCondition
   public:
     static const int TEMP_MIN = 10;
     static const int TEMP_MAX = 35;
-    static const int TEMP_UPPERTHIRD = (TEMP_MAX - TEMP_MIN) / 3. * 2. + TEMP_MIN;
+    const float TEMP_UPPERTHIRD = (TEMP_MAX - TEMP_MIN) / 3.0f * 2.0f + TEMP_MIN;
 
     enum Cover
     {

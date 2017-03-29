@@ -28,7 +28,7 @@ EnvironmentalCondition EnvironmentalEngine::createCondition()
   // Generate and return random condition
   return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % 4),
                                 EnvironmentalCondition::Rank(rand() % 4),
-                                (float) (rand() % (EnvironmentalCondition::TEMP_MAX * 10
+                                static_cast<float>(rand() % (EnvironmentalCondition::TEMP_MAX * 10
                                     - EnvironmentalCondition::TEMP_MIN * 10 + 1)
                                     + EnvironmentalCondition::TEMP_MIN * 10) / 10,
                                 EnvironmentalCondition::Rank(rand() % 4));
