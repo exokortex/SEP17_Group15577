@@ -12,7 +12,7 @@
 #ifndef ENVIRONMENTALENGINE_H_INCLUDED
 #define ENVIRONMENTALENGINE_H_INCLUDED
 
-#include "EnvironmentalCondition.h"
+class EnvironmentalCondition;
 
 class EnvironmentalEngine
 {
