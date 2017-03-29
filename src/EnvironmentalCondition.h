@@ -12,12 +12,9 @@
 #ifndef ENVIRONMENTALCONDITION_H_INCLUDED
 #define ENVIRONMENTALCONDITION_H_INCLUDED
 
-
-
-
 //------------------------------------------------------------------------------
 // class EnvironmentalCondition
-// implements the methods, setters and getters
+// implements the constructor, methods, setters and getters
 //
 class EnvironmentalCondition
 {

@@ -11,78 +11,28 @@
 
 #include "EnvironmentalCondition.h"
 
-using namespace std;
-
-EnvironmentalCondition::EnvironmentalCondition(int sky_cover, int precipitation, float temperature, int wind)
+EnvironmentalCondition::EnvironmentalCondition(Cover sky_cover,
+    Rank precipitation, float temperature, Rank wind)
 {
-  enum sky_cover: int
-  {
-    SUNNY, CLOUDY, OVERCAST, VERY_OVERCAST
-  };
-  enum precipitation: int
-  {
-    NONE, LOW, MEDIUM, HIGH
-  };
-  enum wind: int
-  {
-    NONE, LOW, MEDIUM, HIGH
-  };
-
-
-  //Methoden
-  void EnvironmentalCondition::isltHot(int sky_cover, int temperature)
-
-
-  void EnvironmentalCondition::isltRainy(int precipitation, int sky_cover)
-
-
-  void EnvironmentalCondition::isltStormy(int wind, int sky_cover)
-
-
-
-
-  public:
-    //Setters
-    void setSkyCover(int cover)
-    {
-      sky_cover = cover;
-    }
-    void setPrecipitation(int rank)
-    {
-      precipitation = rank;
-    }
-    void setTemperature(float temperature)
-    {
-      temperature = temperature;
-    }
-    void setWind(int rank)
-    {
-      wind = rank;
-    }
-
-    //Getters
-    int getSkyCover() const
-    {
-      return void;
-    }
-    int getPrecipitation() const
-    {
-      return void;
-    }
-    int getTemperature() const
-    {
-      return void;
-    }
-    int getWind() const
-    {
-      return void;
-    }
-
-  private:
-    int sky_cover;
-    int precipitation;
-	int temperature;
-	int wind;
-
+  this->sky_cover_ = sky_cover;
+  this->precipitation_ = precipitation;
+  this->temperature_ = temperature;
+  this->wind_ = wind;
 }
 
+bool EnvironmentalCondition::isItHot()
+{
+  return sky_cover_ == SUNNY && temperature_ >= TEMP_UPPERTHIRD;
+}
+
+bool EnvironmentalCondition::isItRainy()
+{
+  return (precipitation_ == MEDIUM || precipitation_ == HIGH)
+      && (sky_cover_ == OVERCAST || sky_cover_ == VERY_OVERCAST);
+}
+
+bool EnvironmentalCondition::isItStormy()
+{
+  return (wind_ == MEDIUM || wind_ == HIGH)
+      && (sky_cover_ == OVERCAST || sky_cover_ == VERY_OVERCAST);
+}
