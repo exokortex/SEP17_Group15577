@@ -17,14 +17,12 @@
 
 EnvironmentalEngine::EnvironmentalEngine()
 {
-  // empty constructor
+  // Initialize random seed
+  srand(time(NULL));
 }
 
 EnvironmentalCondition EnvironmentalEngine::createCondition()
 {
-  // Initialize random seed
-  srand(time(NULL));
-
   // Generate and return random condition
   return EnvironmentalCondition(EnvironmentalCondition::Cover(rand() % EnvironmentalCondition::COVER_SIZE),
                                 EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE),
