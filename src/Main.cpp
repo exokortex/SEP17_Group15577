@@ -2,6 +2,8 @@
 
 #include "EnvironmentalCondition.h"
 #include "EnvironmentalEngine.h"
+#include "HTMLWriter.h"
+#include "HTMLWriterBalance.h"
 
 using std::cout;
 using std::endl;
@@ -25,6 +27,11 @@ int main()
   cout << "isItStormy: " << ec->isItStormy() << endl;
 
   delete ec;
+
+  HTMLWriter writer = HTMLWriter("test.html");
+  writer.writeFile("asdf");
+  HTMLWriterBalance writer2 = HTMLWriterBalance("balance.html");
+  writer2.writeFile(1,2,3,-5);
 
   return 0;
 }

@@ -12,6 +12,10 @@
 #ifndef HTMLWRITER_H_INCLUDED
 #define HTMLWRITER_H_INCLUDED
 
+#include <string>
+
+using std::string;
+
 //------------------------------------------------------------------------------
 // class HTMLWriter
 // implements the methods and attributes
@@ -19,51 +23,24 @@
 class HTMLWriter
 {
   public:
-
     //--------------------------------------------------------------------------
     // Constructor
-    // setzt den Default-Dateinamen für die Ausgabe
+    // sets the default filename for output
     //
-    HTMLWriter(string filename = basisHTML);
+    HTMLWriter(string filename);
 
     //--------------------------------------------------------------------------
-    // Methode
+    // writeFile
+    // wirtes an HTML file with the parameter as body.
+    // @param the body of the HTML-File to write
     //
-    void writeFile(const char* file, int argc, char *argv[])
-	{
-      ofstream file;
-      file.open("basisHTML.html");
+    void writeFile(string body);
 
-      file.PutString("<html lang="en">\n");
-      file.PutString("<head>\n");
-      file.PutString("<meta charset="utf-8">\n");
-      file.PutString("<meta http-equiv="refresh" content="3">\n");
-      file.PutString("<title>SEP 2017</title>\n");
-      file.PutString("<style>boy{margin: 0px; padding: 0px;}</style>\n");
-      file.PutString("</head>\n");
-      file.PutString("<body></body>\n");
-      file.PutString("</html>\n");
-    }
-
-    {
-      ifstream file;
-      string s;
-      file.open(argv[1], ios::in);
-      while (!file.eof())
-      {
-	    getline(file, string);
-	    file << string << endl;
-      }
-    file.close();
-    }
-	return File;
-
-private:
-
-  string filename_; //Attribut
-
-
-
+  private:
+    //--------------------------------------------------------------------------
+    // the default filename
+    //
+    string filename_;
 };
 
 #endif /* HTMLWRITER_H_INCLUDED */
