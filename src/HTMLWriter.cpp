@@ -7,8 +7,18 @@
 //          Thomas Moder 1615103
 //          Verena Buder 1312723
 //------------------------------------------------------------------------------
-//TEST TEST TEST
+//
 
 #include "HTMLWriter.h"
 
+//------------------------------------------------------------------------------
+HTMLWriter::HTMLWriter(string filename)
+{
+  this->filename_ = filename;
+}
 
+//------------------------------------------------------------------------------
+void HTMLWriter::writeFile(const char* file, int argc, char *argv[])
+{
+  return file;
+}
