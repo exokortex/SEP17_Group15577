@@ -50,7 +50,7 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
       break;
   }
 
-  body << "    <table cellpadding=\"10\" border=\"1\""
+  body << "    <table cellpadding=\"15\" border=\"1\" bordercolor=\"#cccccc\""
                 "style=\"border-collapse: collapse; margin: 25px;\">"
           "      <tbody>"
           "        <tr>"
