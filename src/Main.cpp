@@ -4,6 +4,7 @@
 #include "EnvironmentalEngine.h"
 #include "HTMLWriter.h"
 #include "HTMLWriterBalance.h"
+#include "HTMLWriterEnvironment.h"
 
 using std::cout;
 using std::endl;
@@ -26,12 +27,14 @@ int main()
   cout << "isItRainy: " << ec->isItRainy() << endl;
   cout << "isItStormy: " << ec->isItStormy() << endl;
 
-  delete ec;
-
   HTMLWriter writer = HTMLWriter("test.html");
   writer.writeFile("asdf");
   HTMLWriterBalance writer2 = HTMLWriterBalance("balance.html");
   writer2.writeFile(1,2,3,-5);
+  HTMLWriterEnvironment writer3 = HTMLWriterEnvironment("environment.html");
+  writer3.writeFile(*ec);
+
+  delete ec;
 
   return 0;
 }

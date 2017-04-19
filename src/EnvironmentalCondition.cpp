@@ -40,3 +40,28 @@ bool EnvironmentalCondition::isItStormy()
   return (wind_ == MEDIUM || wind_ == HIGH)
       && (sky_cover_ == OVERCAST || sky_cover_ == VERY_OVERCAST);
 }
+
+string EnvironmentalCondition::getWindString()
+{
+  return rankToString(wind_);
+}
+
+string EnvironmentalCondition::getPrecipitationString()
+{
+  return rankToString(precipitation_);
+}
+
+string EnvironmentalCondition::rankToString(Rank rank)
+{
+  switch (rank) {
+    case EnvironmentalCondition::NONE:
+      return "none";
+    case EnvironmentalCondition::LOW:
+      return "low";
+    case EnvironmentalCondition::MEDIUM:
+      return "medium";
+    case EnvironmentalCondition::HIGH:
+      return "high";
+  }
+  return "";
+}

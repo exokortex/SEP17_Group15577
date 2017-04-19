@@ -12,6 +12,10 @@
 #ifndef ENVIRONMENTALCONDITION_H_INCLUDED
 #define ENVIRONMENTALCONDITION_H_INCLUDED
 
+#include <string>
+
+using std::string;
+
 //------------------------------------------------------------------------------
 // class EnvironmentalCondition
 // implements the methods, setters and getters
@@ -92,6 +96,10 @@ class EnvironmentalCondition
     //         sky_cover is overcast or very overcast
     //
     bool isItStormy();
+
+    string getWindString();
+    string getPrecipitationString();
+    static string rankToString(Rank rank);
 
     //--------------------------------------------------------------------------
     // Setter Methods
