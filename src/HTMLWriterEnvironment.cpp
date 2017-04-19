@@ -10,12 +10,14 @@
 
 #include "HTMLWriterEnvironment.h"
 
+//------------------------------------------------------------------------------
 HTMLWriterEnvironment::HTMLWriterEnvironment(string filename) :
     HTMLWriter::HTMLWriter(filename)
 {
   //nothing to do here
 }
 
+//------------------------------------------------------------------------------
 void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
 {
   std::stringstream body;
@@ -26,31 +28,37 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
   switch (ec.getSkyCover()) {
     case EnvironmentalCondition::SUNNY:
       skycoverstr = "sunny";
-      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/9/9a/Sunny.png";
+      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/9/9a/"
+          "Sunny.png";
       break;
     case EnvironmentalCondition::CLOUDY:
       skycoverstr = "cloudy";
-      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/3/33/Cloudy.png";
+      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/3/33/"
+          "Cloudy.png";
       break;
     case EnvironmentalCondition::OVERCAST:
       skycoverstr = "overcast";
-      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/6/6f/Overcast.png";
+      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/6/6f/"
+          "Overcast.png";
       break;
     case EnvironmentalCondition::VERY_OVERCAST:
       skycoverstr = "very overcast";
-      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/3/30/Very_overcast.png";
+      skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/3/30/"
+          "Very_overcast.png";
       break;
     default:
       break;
   }
 
-  body << "    <table cellpadding=\"10\" border=\"1\" style=\"border-collapse: collapse; margin: 25px;\">"
+  body << "    <table cellpadding=\"10\" border=\"1\""
+                "style=\"border-collapse: collapse; margin: 25px;\">"
           "      <tbody>"
           "        <tr>"
           "          <th>Precipitation:</th>"
           "          <td>" << ec.getPrecipitationString() << "</td>"
           "          <td rowspan=\"6\" align=\"center\">"
-          "            <img src=\"" << skycoverimg << "\" alt=\"\" width=\"128\" height=\"128\" />"
+          "            <img src=\"" << skycoverimg << "\" alt=\"\""
+                        "width=\"128\" height=\"128\" />"
           "            <br>" << skycoverstr << ""
           "          </td>"
           "        </tr>"
@@ -73,13 +81,6 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
           "        <tr>"
           "          <th>Stormy:</th>"
           "          <td>" << (ec.isItStormy() ? "yes" : "no") << "</td>"
-          "        </tr>"
-          /*"            <p><strong>: </strong>14.6°C</p>"
-          "            <p><strong>: </strong>medium</p>"
-          "            <p><strong>: </strong>false</p>"
-          "            <p><strong>: </strong>true</p>"
-          "            <p><strong>: </strong>true</p>"*/
-          "          </td>"
           "        </tr>"
           "      </tbody>"
           "    </table>";
