@@ -1,3 +1,6 @@
+//------------------------------------------------------------------------------
+// HTMLWriterBalance.h
+//
 // Group: Group 15577, study assistant Roman Walch
 //
 // Authors: Johannes Haring 1611655
@@ -11,10 +14,27 @@
 
 #include "HTMLWriter.h"
 
+//------------------------------------------------------------------------------
+// class HTMLWriterBalance
+// HTMLWriter for the current balance
+//
 class HTMLWriterBalance : HTMLWriter
 {
   public:
+    //--------------------------------------------------------------------------
+    // Constructor
+    // sets the default filename for output
+    //
     HTMLWriterBalance(std::string filename);
+
+    //--------------------------------------------------------------------------
+    // writeFile
+    // Writes an HTML file according to the parameters
+    // @param lemon the lemon count
+    // @param sugar the sugar count
+    // @param cash the cash
+    // @param delta the delta
+    //
     void writeFile(int lemon, int sugar, int cash, int delta);
 };
 

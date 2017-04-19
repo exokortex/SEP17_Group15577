@@ -14,6 +14,10 @@
 
 class EnvironmentalCondition;
 
+//------------------------------------------------------------------------------
+// class EnvironmentalEngine
+// generator for random EnvironmentalCondition objects
+//
 class EnvironmentalEngine
 {
   public:

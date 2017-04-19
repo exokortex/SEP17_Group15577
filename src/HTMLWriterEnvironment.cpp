@@ -1,3 +1,6 @@
+//------------------------------------------------------------------------------
+// HTMLWriterEnvironment.cpp
+//
 // Group: Group 15577, study assistant Roman Walch
 //
 // Authors: Johannes Haring 1611655
@@ -14,7 +17,7 @@
 HTMLWriterEnvironment::HTMLWriterEnvironment(string filename) :
     HTMLWriter::HTMLWriter(filename)
 {
-  //nothing to do here
+  // nothing to do here
 }
 
 //------------------------------------------------------------------------------

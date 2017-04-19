@@ -26,7 +26,8 @@ void HTMLWriter::writeFile(std::string body)
   std::ofstream file;
   file.open(this->filename_);
 
-  file << "<!DOCTYPE html>" "<html lang=\"en\">\n"
+  file << "<!DOCTYPE html>\n"
+      "<html lang=\"en\">\n"
       "  <head>\n"
       "    <meta charset=\"utf-8\">\n"
       "    <meta http-equiv=\"refresh\" content=\"3\">\n"

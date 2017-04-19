@@ -1,3 +1,6 @@
+//------------------------------------------------------------------------------
+// HTMLWriterEnvironment.h
+//
 // Group: Group 15577, study assistant Roman Walch
 //
 // Authors: Johannes Haring 1611655
@@ -12,10 +15,25 @@
 #include "HTMLWriter.h"
 #include "EnvironmentalCondition.h"
 
+//------------------------------------------------------------------------------
+// class HTMLWriterEnvironment
+// HTMLWriter for the current EnvironmentalCondition
+//
 class HTMLWriterEnvironment : HTMLWriter
 {
   public:
+    //--------------------------------------------------------------------------
+    // Constructor
+    // sets the default filename for output
+    //
     HTMLWriterEnvironment(string filename);
+
+    //--------------------------------------------------------------------------
+    // writeFile
+    // Writes an HTML file according to the parameters
+    // @param EnvironmentalCondition the EnvironmentalCondition to be
+    //        represented in the file
+    //
     void writeFile(EnvironmentalCondition ec);
 };
 

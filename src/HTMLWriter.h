@@ -18,7 +18,7 @@ using std::string;
 
 //------------------------------------------------------------------------------
 // class HTMLWriter
-// implements the methods and attributes
+// generic HTML file writer
 //
 class HTMLWriter
 {
