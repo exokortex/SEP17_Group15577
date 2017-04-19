@@ -31,7 +31,11 @@ void HTMLWriter::writeFile(std::string body)
       "    <meta charset=\"utf-8\">\n"
       "    <meta http-equiv=\"refresh\" content=\"3\">\n"
       "    <title>SEP 2017</title>\n"
-      "    <style>body{margin: 0px; padding: 0px;}</style>\n"
+      "    <style>"
+      "      body{margin: 0px; padding: 0px;}"
+      "      table{border-collapse: collapse;}"
+      "      th, td{border: 1px solid #cccccc; padding: 15px;}"
+      "    </style>\n"
       "  </head>\n"
       "  <body>\n" << body << "</body>\n"
       "</html>\n";

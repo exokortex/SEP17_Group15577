@@ -50,15 +50,14 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
       break;
   }
 
-  body << "    <table cellpadding=\"15\" border=\"1\" bordercolor=\"#cccccc\""
-                "style=\"border-collapse: collapse; margin: 25px;\">"
+  body << "    <table style=\"margin: 25px;\">"
           "      <tbody>"
           "        <tr>"
           "          <th>Precipitation:</th>"
           "          <td>" << ec.getPrecipitationString() << "</td>"
-          "          <td rowspan=\"6\" align=\"center\">"
+          "          <td rowspan=\"6\" style=\"text-align: center\">"
           "            <img src=\"" << skycoverimg << "\" alt=\"\""
-                        "width=\"128\" height=\"128\" />"
+                        " width=\"128\" height=\"128\" />"
           "            <br>" << skycoverstr << ""
           "          </td>"
           "        </tr>"
