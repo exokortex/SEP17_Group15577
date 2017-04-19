@@ -18,7 +18,7 @@ using std::string;
 
 //------------------------------------------------------------------------------
 // class EnvironmentalCondition
-// implements the methods, setters and getters
+// dataclass for one state of the environment
 //
 class EnvironmentalCondition
 {
