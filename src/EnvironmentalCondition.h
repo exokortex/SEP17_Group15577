@@ -97,8 +97,23 @@ class EnvironmentalCondition
     //
     bool isItStormy();
 
+    //--------------------------------------------------------------------------
+    // getWindString
+    // @return Returns the wind condition as string
+    //
     string getWindString();
+
+    //--------------------------------------------------------------------------
+    // getPrecipitationString
+    // @return Returns the precipitation condition as string
+    //
     string getPrecipitationString();
+
+    //--------------------------------------------------------------------------
+    // rankToString
+    // @return Converts the given rank to a human-readable string
+    // @param rank the rank to convert
+    //
     static string rankToString(Rank rank);
 
     //--------------------------------------------------------------------------

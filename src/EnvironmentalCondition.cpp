@@ -41,16 +41,19 @@ bool EnvironmentalCondition::isItStormy()
       && (sky_cover_ == OVERCAST || sky_cover_ == VERY_OVERCAST);
 }
 
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::getWindString()
 {
   return rankToString(wind_);
 }
 
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::getPrecipitationString()
 {
   return rankToString(precipitation_);
 }
 
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::rankToString(Rank rank)
 {
   switch (rank) {
