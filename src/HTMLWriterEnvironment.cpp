@@ -25,10 +25,13 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
 {
   std::stringstream body;
 
+  //choose correct image url and text for sky coverage
+
   string skycoverstr;
   string skycoverimg;
 
-  switch (ec.getSkyCover()) {
+  switch (ec.getSkyCover())
+  {
     case EnvironmentalCondition::SUNNY:
       skycoverstr = "sunny";
       skycoverimg = "https://palme.iicm.tugraz.at/wiki/images/9/9a/"
@@ -53,6 +56,7 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
       break;
   }
 
+  //"concatenate" HTML code as needed
   body << "    <table style=\"margin: 25px;\">\n"
           "      <tbody>\n"
           "        <tr>\n"
@@ -86,5 +90,7 @@ void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
           "        </tr>\n"
           "      </tbody>\n"
           "    </table>\n";
+
+  //write file using super class and HTML body code
   HTMLWriter::writeFile(body.str());
 }
