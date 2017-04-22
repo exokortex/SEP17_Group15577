@@ -2,6 +2,7 @@
 #include <string>
 
 #include "GameGUI.h"
+#include "GameHandler.h"
 
 using std::cout;
 using std::cin;
@@ -13,11 +14,11 @@ const string CMD_PROMPT = "sep> ";
 GameGUI::GameGUI()
 {
   //create game handler and set this instance as View
-  this->handler_ = GameHandler(this);
+  this->handler_ = new GameHandler(this);
 }
 
 //------------------------------------------------------------------------------
-void GameHandler::output(string output)
+void GameGUI::output(string output)
 {
   cout << output;
 }
@@ -37,7 +38,7 @@ int main()
     //wait for and read command line
     std::getline(cin, input_line);
     //forward input line to handler
-    view.getHandler().input(input_line);
+    view.getHandler()->input(input_line);
   }
 
   return 0;

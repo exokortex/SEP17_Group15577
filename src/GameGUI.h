@@ -38,7 +38,7 @@ class GameGUI
     //--------------------------------------------------------------------------
     // Getter Methods
     //
-    GameHandler getHandler() const
+    GameHandler* getHandler() const
     {
       return handler_;
     }
@@ -47,7 +47,7 @@ class GameGUI
     //--------------------------------------------------------------------------
     // The hold instance of the GameHandler
     //
-    GameHandler handler_;
+    GameHandler* handler_;
 };
 
 #endif /* GAMEGUI_H_INCLUDED */

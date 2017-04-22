@@ -12,9 +12,10 @@
 #include <stdlib.h>
 
 #include "GameHandler.h"
+#include "GameGUI.h"
 
 //------------------------------------------------------------------------------
-GameHandler::GameHandler(GameGUI view)
+GameHandler::GameHandler(GameGUI* view)
 {
   this->view_ = view;
 }
@@ -28,5 +29,5 @@ int GameHandler::input(string command)
 //------------------------------------------------------------------------------
 void GameHandler::output(string output)
 {
-  this->view_.output(output);
+  view_->output(output);
 }

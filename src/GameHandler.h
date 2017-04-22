@@ -29,7 +29,7 @@ class GameHandler
     // Constructor
     // Creates an object and sets the games View
     //
-    GameHandler(GameGUI view);
+    GameHandler(GameGUI* view);
 
     //--------------------------------------------------------------------------
     // Processes a given input command
@@ -45,7 +45,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
-    GameGUI view_;
+    GameGUI* view_;
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */
