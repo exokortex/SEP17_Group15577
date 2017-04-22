@@ -42,10 +42,15 @@ void GameUI::run()
     cout << CMD_PROMPT;
 
     //wait for and read command line
-    std::getline(cin, input_line);
+    if (!std::getline(cin, input_line))
+    {
+      // exit if reading went wrong (i.e. EOF)
+      break;
+    }
 
     //process input line
-    CommandQuit* cmd = new CommandQuit();
+    vector<string> c(0);
+    CommandQuit* cmd = new CommandQuit(&c);
     this->handler_->command(cmd);
   }
 }

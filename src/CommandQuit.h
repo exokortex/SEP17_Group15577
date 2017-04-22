@@ -10,17 +10,20 @@
 //------------------------------------------------------------------------------
 //
 
-#ifndef COMMAND_H_INCLUDED
-#define COMMAND_H_INCLUDED
+#ifndef COMMAND_QUIT_H_INCLUDED
+#define COMMAND_QUIT_H_INCLUDED
 
 #include <string>
 #include <vector>
 
 #include "Command.h"
 
+using std::string;
+using std::vector;
+
 class GameHandler;
 
-class CommandQuit : Command
+class CommandQuit : public Command
 {
   public:
     CommandQuit(vector<string>* params);
@@ -31,7 +34,7 @@ class CommandQuit : Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing if the command is valid
 
-    int validate(GameHandler& game);
+    virtual int validate(GameHandler& game);
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -39,7 +42,7 @@ class CommandQuit : Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
 
-    int execute(GameHandler& game);
+    virtual int execute(GameHandler& game);
 };
 
-#endif //COMMAND_H_INCLUDED
+#endif //COMMAND_QUIT_H_INCLUDED
