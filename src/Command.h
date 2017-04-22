@@ -16,6 +16,9 @@
 #include <string>
 #include <vector>
 
+using std::string;
+using std::vector;
+
 class GameHandler;
 
 class Command
@@ -33,17 +36,17 @@ class Command
 
     //--------------------------------------------------------------------------
     /// Name of this command
-    std::string command_name_;
+    string command_name_;
 
     //--------------------------------------------------------------------------
     /// User-input parameters
-    std::vector<std::string>& input_params_;
+    vector<string>* params_;
 
   public:
     //--------------------------------------------------------------------------
     // Constructor
 
-    Command(std::string name);
+    Command(string name, vector<string>* params);
 
     //--------------------------------------------------------------------------
     // Destructor
@@ -68,8 +71,8 @@ class Command
 
     //--------------------------------------------------------------------------
     // Getter Methods
-    const std::string& getName() const;
-    const std::string& getInputParams() const;
+    const string& getName() const;
+    const vector<string>* getParams() const;
 };
 
 #endif //COMMAND_H_INCLUDED

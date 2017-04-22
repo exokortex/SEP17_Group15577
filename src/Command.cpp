@@ -13,8 +13,10 @@
 
 
 //------------------------------------------------------------------------------
-Command::Command(std::string name) : command_name_(name)
+Command::Command(string name, vector<string>* params)
 {
+  this->command_name_ = name;
+  this->params_ = params;
 }
 
 //------------------------------------------------------------------------------
@@ -23,13 +25,13 @@ Command::~Command()
 }
 
 //------------------------------------------------------------------------------
-const std::string &Command::getName() const
+const string &Command::getName() const
 {
   return command_name_;
 }
 
 //------------------------------------------------------------------------------
-const std::string &Command::getInputParams() const
+const vector<string> *Command::getParams() const
 {
-  return input_params_;
+  return params_;
 }

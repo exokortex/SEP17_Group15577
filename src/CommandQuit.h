@@ -25,15 +25,13 @@ class CommandQuit : Command
   public:
     CommandQuit();
 
-    ~CommandQuit();
-
     //--------------------------------------------------------------------------
     // Validates the commands params.
     // @param game The game where action should be performed on
     // @param params Possible parameters neede for the execution
     // @return Integer representing if the command is valid
 
-    int validate(GameHandler& game, std::vector<std::string>& params);
+    int validate(GameHandler& game);
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -41,7 +39,7 @@ class CommandQuit : Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
 
-    int execute(GameHandler& game, std::vector<std::string>& params);
+    int execute(GameHandler& game);
 };
 
 #endif //COMMAND_H_INCLUDED
