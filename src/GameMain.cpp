@@ -8,9 +8,12 @@ int main()
   //create game Controller object reference
   GameHandler* handler = new GameHandler();
 
-  //create and run game View object
-  GameUI view = GameUI(handler);
-  view.run();
+  //create game View object
+  GameUI* view = new GameUI(handler);
+  //set View on Controller
+  handler->setView(view);
+  //run View
+  view->run();
 
   return 0;
 }
