@@ -24,7 +24,10 @@ GameHandler::GameHandler()
 //------------------------------------------------------------------------------
 int GameHandler::command(Command* cmd)
 {
-  output("test\n");
+  if(cmd->validate(*this))
+  {
+    cmd->execute(*this);
+  }
   return 1;
 }
 

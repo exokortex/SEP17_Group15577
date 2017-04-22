@@ -27,3 +27,9 @@ const std::string &Command::getName() const
 {
   return command_name_;
 }
+
+//------------------------------------------------------------------------------
+const std::string &Command::getInputParams() const
+{
+  return input_params_;
+}
