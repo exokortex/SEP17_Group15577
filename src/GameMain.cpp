@@ -19,7 +19,7 @@ int main()
   //create game Controller object reference
   GameHandler* handler = new GameHandler();
 
-  //create game View object
+  //create game View object reference
   GameUI* view = new GameUI(handler);
   //set View on Controller
   handler->setView(view);
