@@ -12,7 +12,6 @@
 #include <stdlib.h>
 
 #include "GameHandler.h"
-
 #include "GameUI.h"
 
 //------------------------------------------------------------------------------
