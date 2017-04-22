@@ -23,7 +23,7 @@ class GameHandler;
 class CommandQuit : Command
 {
   public:
-    CommandQuit();
+    CommandQuit(vector<string>* params);
 
     //--------------------------------------------------------------------------
     // Validates the commands params.

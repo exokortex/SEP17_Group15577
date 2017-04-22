@@ -10,6 +10,30 @@
 //------------------------------------------------------------------------------
 //
 
+#include <string>
+
 #include "CommandQuit.h"
 #include "Command.h"
 
+using std::string;
+
+const string NAME = "quit";
+
+//------------------------------------------------------------------------------
+CommandQuit::CommandQuit(vector<string>* params) :
+    Command::Command(NAME, params)
+{
+  //nothing to do
+}
+
+//------------------------------------------------------------------------------
+int CommandQuit::validate(GameHandler& game)
+{
+  return 1;
+}
+
+//------------------------------------------------------------------------------
+int CommandQuit::execute(GameHandler& game)
+{
+  return 1;
+}
