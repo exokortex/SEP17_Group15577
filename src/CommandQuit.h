@@ -33,10 +33,7 @@ class CommandQuit : Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing if the command is valid
 
-    int validate(GameHandler& game, std::vector<std::string>& params)
-    {
-      return 0;
-    }
+    int validate(GameHandler& game, std::vector<std::string>& params);
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -44,10 +41,7 @@ class CommandQuit : Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
 
-    int execute(GameHandler& game, std::vector<std::string>& params)
-    {
-      return 0;
-    }
+    int execute(GameHandler& game, std::vector<std::string>& params);
 };
 
 #endif //COMMAND_H_INCLUDED
