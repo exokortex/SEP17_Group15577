@@ -15,6 +15,7 @@
 #include <string>
 
 #include "GameHandler.h"
+#include "CommandQuit.h"
 
 using std::cout;
 using std::cin;
@@ -44,7 +45,8 @@ void GameUI::run()
     std::getline(cin, input_line);
 
     //process input line
-    this->handler_->input(input_line);
+    CommandQuit* cmd = new CommandQuit();
+    this->handler_->command(cmd);
   }
 }
 

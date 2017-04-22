@@ -13,6 +13,7 @@
 
 #include "GameHandler.h"
 #include "GameUI.h"
+#include "Command.h"
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler()
@@ -21,7 +22,7 @@ GameHandler::GameHandler()
 }
 
 //------------------------------------------------------------------------------
-int GameHandler::input(string command)
+int GameHandler::command(Command* cmd)
 {
   output("test\n");
   return 1;

@@ -17,6 +17,7 @@
 using std::string;
 
 class GameUI;
+class Command;
 
 //------------------------------------------------------------------------------
 // class GameHandler
@@ -33,7 +34,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // Processes a given input command
     //
-    int input(string command);
+    int command(Command* cmd);
 
     //--------------------------------------------------------------------------
     // Forwards a given output to View
