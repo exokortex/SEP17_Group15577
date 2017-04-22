@@ -47,6 +47,14 @@ class Command
     virtual ~Command();
 
     //--------------------------------------------------------------------------
+    // Validates the commands params.
+    // @param game The game where action should be performed on
+    // @param params Possible parameters neede for the execution
+    // @return Integer representing if the command is valid
+
+    virtual int validate(GameHandler& game, std::vector<std::string>& params) = 0;
+
+    //--------------------------------------------------------------------------
     // Executes the command.
     // @param game The game where action should be performed on
     // @param params Possible parameters neede for the execution
