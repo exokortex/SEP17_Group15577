@@ -16,7 +16,7 @@
 
 using std::string;
 
-class GameGUI;
+class GameUI;
 
 //------------------------------------------------------------------------------
 // class GameHandler
@@ -29,7 +29,7 @@ class GameHandler
     // Constructor
     // Creates an object and sets the games View
     //
-    GameHandler(GameGUI* view);
+    GameHandler(GameUI* view);
 
     //--------------------------------------------------------------------------
     // Processes a given input command
@@ -45,7 +45,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
-    GameGUI* view_;
+    GameUI* view_;
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */

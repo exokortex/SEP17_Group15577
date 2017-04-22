@@ -12,10 +12,11 @@
 #include <stdlib.h>
 
 #include "GameHandler.h"
-#include "GameGUI.h"
+
+#include "GameUI.h"
 
 //------------------------------------------------------------------------------
-GameHandler::GameHandler(GameGUI* view)
+GameHandler::GameHandler(GameUI* view)
 {
   this->view_ = view;
 }

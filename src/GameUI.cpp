@@ -1,7 +1,8 @@
+#include "GameUI.h"
+
 #include <iostream>
 #include <string>
 
-#include "GameGUI.h"
 #include "GameHandler.h"
 
 using std::cout;
@@ -11,14 +12,14 @@ using std::string;
 const string CMD_PROMPT = "sep> ";
 
 //------------------------------------------------------------------------------
-GameGUI::GameGUI()
+GameUI::GameUI()
 {
   //create game handler and set this instance as View
   this->handler_ = new GameHandler(this);
 }
 
 //------------------------------------------------------------------------------
-void GameGUI::output(string output)
+void GameUI::output(string output)
 {
   cout << output;
 }
@@ -28,7 +29,7 @@ int main()
   string input_line;
 
   //create View (UI) object
-  GameGUI view = GameGUI();
+  GameUI view = GameUI();
 
   //command loop
   while(true)

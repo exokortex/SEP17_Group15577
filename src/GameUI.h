@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// GameGUI.h
+// GameUI.h
 //
 // Group: Group 15577, study assistant Roman Walch
 //
@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 //
 
-#ifndef GAMEGUI_H_INCLUDED
-#define GAMEGUI_H_INCLUDED
+#ifndef GAMEUI_H_INCLUDED
+#define GAMEUI_H_INCLUDED
 
 #include <string>
 
@@ -19,16 +19,16 @@ using std::string;
 class GameHandler;
 
 //------------------------------------------------------------------------------
-// class GameGUI
+// class GameUI
 // The UI (View) class for the game
 //
-class GameGUI
+class GameUI
 {
   public:
     //--------------------------------------------------------------------------
     // Constructor
     //
-    GameGUI();
+    GameUI();
 
     //--------------------------------------------------------------------------
     // Prints a given output
@@ -50,4 +50,4 @@ class GameGUI
     GameHandler* handler_;
 };
 
-#endif /* GAMEGUI_H_INCLUDED */
+#endif /* GAMEUI_H_INCLUDED */
