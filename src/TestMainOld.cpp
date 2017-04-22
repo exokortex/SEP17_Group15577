@@ -9,7 +9,7 @@
 using std::cout;
 using std::endl;
 
-int main()
+int main2()
 {
   //EnvironmentalCondition *ec = new EnvironmentalCondition(EnvironmentalCondition::SUNNY,
   //    EnvironmentalCondition::HIGH, 34.0, EnvironmentalCondition::MEDIUM);
