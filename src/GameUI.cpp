@@ -12,35 +12,33 @@ using std::string;
 const string CMD_PROMPT = "sep> ";
 
 //------------------------------------------------------------------------------
-GameUI::GameUI()
+GameUI::GameUI(GameHandler* handler)
 {
   //create game handler and set this instance as View
-  this->handler_ = new GameHandler(this);
+  this->handler_ = handler;
 }
 
 //------------------------------------------------------------------------------
-void GameUI::output(string output)
-{
-  cout << output;
-}
-
-int main()
+void GameUI::run()
 {
   string input_line;
-
-  //create View (UI) object
-  GameUI view = GameUI();
 
   //command loop
   while(true)
   {
     //print prompt
     cout << CMD_PROMPT;
+
     //wait for and read command line
     std::getline(cin, input_line);
-    //forward input line to handler
-    view.getHandler()->input(input_line);
-  }
 
-  return 0;
+    //process input line
+    this->handler_->input(input_line);
+  }
+}
+
+//------------------------------------------------------------------------------
+void GameUI::output(string output)
+{
+  cout << output;
 }

@@ -20,7 +20,7 @@ class GameHandler;
 
 //------------------------------------------------------------------------------
 // class GameUI
-// The UI (View) class for the game
+// The View class for the game
 //
 class GameUI
 {
@@ -28,7 +28,12 @@ class GameUI
     //--------------------------------------------------------------------------
     // Constructor
     //
-    GameUI();
+    GameUI(GameHandler* handler);
+
+    //--------------------------------------------------------------------------
+    // Runs the UI process
+    //
+    void run();
 
     //--------------------------------------------------------------------------
     // Prints a given output

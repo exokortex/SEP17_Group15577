@@ -20,16 +20,15 @@ class GameUI;
 
 //------------------------------------------------------------------------------
 // class GameHandler
-// The handler (controller) class for the game
+// The Controller class for the game
 //
 class GameHandler
 {
   public:
     //--------------------------------------------------------------------------
     // Constructor
-    // Creates an object and sets the games View
     //
-    GameHandler(GameUI* view);
+    GameHandler();
 
     //--------------------------------------------------------------------------
     // Processes a given input command
@@ -41,11 +40,19 @@ class GameHandler
     //
     void output(string output);
 
+    //--------------------------------------------------------------------------
+    // Setter Methods
+    //
+    void setView(GameUI* view)
+    {
+      this->view_ = view;
+    }
+
   private:
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
-    GameUI* view_;
+    GameUI* view_ = NULL;
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */

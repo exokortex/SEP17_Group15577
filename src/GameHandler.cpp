@@ -16,14 +16,15 @@
 #include "GameUI.h"
 
 //------------------------------------------------------------------------------
-GameHandler::GameHandler(GameUI* view)
+GameHandler::GameHandler()
 {
-  this->view_ = view;
+  //nothing to do
 }
 
 //------------------------------------------------------------------------------
 int GameHandler::input(string command)
 {
+  output("test\n");
   return 1;
 }
 
