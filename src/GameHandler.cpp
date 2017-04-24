@@ -22,16 +22,6 @@ GameHandler::GameHandler()
 }
 
 //------------------------------------------------------------------------------
-int GameHandler::command(Command* cmd)
-{
-  if(cmd->validate(*this))
-  {
-    cmd->execute(*this);
-  }
-  return 1;
-}
-
-//------------------------------------------------------------------------------
 void GameHandler::output(string output)
 {
   view_->output(output);

@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 #include "GameHandler.h"
 #include "CommandQuit.h"
@@ -30,13 +31,32 @@ GameUI::GameUI(GameHandler* handler)
   this->handler_ = handler;
 }
 
+std::vector<std::string> split(std::string const& original, char separator)
+{
+  std::vector<std::string> results;
+  std::string::const_iterator start = original.begin();
+  std::string::const_iterator end = original.end();
+  std::string::const_iterator next = std::find(start, end, separator);
+  while (next != end)
+  {
+    results.push_back(std::string(start, next));
+    start = next + 1;
+    next = std::find(start, end, separator);
+  }
+  results.push_back(std::string(start, next));
+  return results;
+}
+
 //------------------------------------------------------------------------------
 void GameUI::run()
 {
   string input_line;
 
+  vector<Command*> commands = {new CommandQuit() };
+  vector<Command*>::iterator cmd;
+
   //command loop
-  while(true)
+  while (true)
   {
     //print prompt
     cout << CMD_PROMPT;
@@ -48,10 +68,23 @@ void GameUI::run()
       break;
     }
 
-    //process input line
-    vector<string> c(0);
-    CommandQuit* cmd = new CommandQuit(&c);
-    this->handler_->command(cmd);
+    //process input_line
+    vector<string> params = split(input_line, ' ');
+    string command = params[0];
+    // transform command to lowercase to be case insensitive
+    std::transform(command.begin(), command.end(), command.begin(), ::tolower);
+    // remove first element (the command name) from vector
+    params.erase(params.begin());
+    for(cmd = commands.begin(); cmd != commands.end(); cmd++)
+    {
+      if ((*cmd)->getName() == command)
+      {
+        int result = (*cmd)->execute(*handler_, params);
+        if (result == -1)
+          return;
+        break;
+      }
+    }
   }
 }
 

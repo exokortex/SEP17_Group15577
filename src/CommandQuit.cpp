@@ -14,24 +14,20 @@
 
 #include "CommandQuit.h"
 #include "Command.h"
+#include "GameHandler.h"
 
 const string NAME = "quit";
 
 //------------------------------------------------------------------------------
-CommandQuit::CommandQuit(vector<string>* params) :
-    Command(NAME, params)
+CommandQuit::CommandQuit() :
+    Command(NAME)
 {
   //nothing to do
 }
 
 //------------------------------------------------------------------------------
-int CommandQuit::validate(GameHandler& game)
+int CommandQuit::execute(GameHandler& game, vector<string>& params)
 {
-  return 1;
-}
-
-//------------------------------------------------------------------------------
-int CommandQuit::execute(GameHandler& game)
-{
-  return 1;
+  game.output("Going out of business!\n");
+  return -1;
 }

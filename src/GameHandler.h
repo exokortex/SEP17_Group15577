@@ -32,11 +32,6 @@ class GameHandler
     GameHandler();
 
     //--------------------------------------------------------------------------
-    // Processes a given input command
-    //
-    int command(Command* cmd);
-
-    //--------------------------------------------------------------------------
     // Forwards a given output to View
     //
     void output(string output);

@@ -26,53 +26,35 @@ class Command
   private:
     //--------------------------------------------------------------------------
     // Private copy constructor
-
     Command(const Command& original);
 
     //--------------------------------------------------------------------------
     // Private assignment operator
-
     Command& operator=(const Command& original);
 
     //--------------------------------------------------------------------------
     /// Name of this command
     string command_name_;
 
-    //--------------------------------------------------------------------------
-    /// User-input parameters
-    vector<string>* params_;
-
   public:
     //--------------------------------------------------------------------------
     // Constructor
-
-    Command(string name, vector<string>* params);
+    Command(string name);
 
     //--------------------------------------------------------------------------
     // Destructor
-
     virtual ~Command();
-
-    //--------------------------------------------------------------------------
-    // Validates the commands params.
-    // @param game The game where action should be performed on
-    // @param params Possible parameters neede for the execution
-    // @return Integer representing if the command is valid
-
-    virtual int validate(GameHandler& game) = 0;
 
     //--------------------------------------------------------------------------
     // Executes the command.
     // @param game The game where action should be performed on
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
-
-    virtual int execute(GameHandler& game) = 0;
+    virtual int execute(GameHandler& game, vector<string>& params) = 0;
 
     //--------------------------------------------------------------------------
     // Getter Methods
     const string& getName() const;
-    const vector<string>* getParams() const;
 };
 
 #endif //COMMAND_H_INCLUDED

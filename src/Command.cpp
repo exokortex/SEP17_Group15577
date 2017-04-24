@@ -13,10 +13,9 @@
 
 
 //------------------------------------------------------------------------------
-Command::Command(string name, vector<string>* params)
+Command::Command(string name)
 {
   this->command_name_ = name;
-  this->params_ = params;
 }
 
 //------------------------------------------------------------------------------
@@ -28,10 +27,4 @@ Command::~Command()
 const string &Command::getName() const
 {
   return command_name_;
-}
-
-//------------------------------------------------------------------------------
-const vector<string> *Command::getParams() const
-{
-  return params_;
 }

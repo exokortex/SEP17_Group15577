@@ -26,15 +26,7 @@ class GameHandler;
 class CommandQuit : public Command
 {
   public:
-    CommandQuit(vector<string>* params);
-
-    //--------------------------------------------------------------------------
-    // Validates the commands params.
-    // @param game The game where action should be performed on
-    // @param params Possible parameters neede for the execution
-    // @return Integer representing if the command is valid
-
-    virtual int validate(GameHandler& game);
+    CommandQuit();
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -42,7 +34,7 @@ class CommandQuit : public Command
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
 
-    virtual int execute(GameHandler& game);
+    virtual int execute(GameHandler& game, vector<string>& params);
 };
 
 #endif //COMMAND_QUIT_H_INCLUDED
