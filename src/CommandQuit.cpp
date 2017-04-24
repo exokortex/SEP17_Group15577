@@ -6,7 +6,6 @@
 // Authors: Johannes Haring 1611655
 //          Thomas Moder 1615103
 //          Verena Buder 1312723
-//          Tutors
 //------------------------------------------------------------------------------
 //
 
@@ -16,18 +15,18 @@
 #include "Command.h"
 #include "GameHandler.h"
 
-const string NAME = "quit";
+const string CommandQuit::NAME = "quit";
+const string CommandQuit::MESSAGE = "Going out of business!\n";
 
 //------------------------------------------------------------------------------
 CommandQuit::CommandQuit() :
     Command(NAME)
 {
-  //nothing to do
 }
 
 //------------------------------------------------------------------------------
 int CommandQuit::execute(GameHandler& game, vector<string>& params)
 {
-  game.output("Going out of business!\n");
-  return -1;
+  game.output(MESSAGE);
+  return Command::EXECUTION_RESULT_REQUEST_TERMINATION;
 }

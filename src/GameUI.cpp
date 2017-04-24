@@ -17,12 +17,13 @@
 
 #include "GameHandler.h"
 #include "CommandQuit.h"
+#include "CommandEcho.h"
 
 using std::cout;
 using std::cin;
 using std::string;
 
-const string CMD_PROMPT = "sep> ";
+const string GameUI::CMD_PROMPT = "sep> ";
 
 //------------------------------------------------------------------------------
 GameUI::GameUI(GameHandler* handler)
@@ -31,7 +32,7 @@ GameUI::GameUI(GameHandler* handler)
   this->handler_ = handler;
 }
 
-std::vector<std::string> split(std::string const& original, char separator)
+vector<string> GameUI::split(const string& original, char separator)
 {
   std::vector<std::string> results;
   std::string::const_iterator start = original.begin();
@@ -39,7 +40,9 @@ std::vector<std::string> split(std::string const& original, char separator)
   std::string::const_iterator next = std::find(start, end, separator);
   while (next != end)
   {
-    results.push_back(std::string(start, next));
+    // ignore empty parts
+    if (start != next)
+      results.push_back(std::string(start, next));
     start = next + 1;
     next = std::find(start, end, separator);
   }
@@ -52,7 +55,8 @@ void GameUI::run()
 {
   string input_line;
 
-  vector<Command*> commands = {new CommandQuit() };
+  vector<Command*> commands =
+  { new CommandEcho(), new CommandQuit() };
   vector<Command*>::iterator cmd;
 
   //command loop
@@ -71,17 +75,29 @@ void GameUI::run()
     //process input_line
     vector<string> params = split(input_line, ' ');
     string command = params[0];
+
     // transform command to lowercase to be case insensitive
     std::transform(command.begin(), command.end(), command.begin(), ::tolower);
+
     // remove first element (the command name) from vector
     params.erase(params.begin());
-    for(cmd = commands.begin(); cmd != commands.end(); cmd++)
+
+    // find and execute the correct command
+    for (cmd = commands.begin(); cmd != commands.end(); cmd++)
     {
       if ((*cmd)->getName() == command)
       {
         int result = (*cmd)->execute(*handler_, params);
-        if (result == -1)
+        // terminate if requested
+        if (result == Command::EXECUTION_RESULT_REQUEST_TERMINATION)
+        {
+          // delete Command objects
+          for (unsigned int idx = 0; idx < commands.size(); idx++)
+          {
+            delete commands[idx];
+          }
           return;
+        }
         break;
       }
     }

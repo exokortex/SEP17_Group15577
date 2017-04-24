@@ -6,7 +6,6 @@
 // Authors: Johannes Haring 1611655
 //          Thomas Moder 1615103
 //          Verena Buder 1312723
-//          Tutors
 //------------------------------------------------------------------------------
 //
 
@@ -25,7 +24,21 @@ class GameHandler;
 
 class CommandQuit : public Command
 {
+  private:
+    //--------------------------------------------------------------------------
+    // name of the command
+    //
+    static const string NAME;
+
+    //--------------------------------------------------------------------------
+    // the quit message
+    //
+    static const string MESSAGE;
+
   public:
+    //--------------------------------------------------------------------------
+    // Constructor
+    //
     CommandQuit();
 
     //--------------------------------------------------------------------------
@@ -33,7 +46,11 @@ class CommandQuit : public Command
     // @param game The game where action should be performed on
     // @param params Possible parameters neede for the execution
     // @return Integer representing the success of the action
-
+    //         0 for normal execution
+    //         -1 for a request to stop the program
+    //         positive numbers: unsuccessful
+    //         see Command::EXECUTION_RESULT_* for all options
+    //
     virtual int execute(GameHandler& game, vector<string>& params);
 };
 

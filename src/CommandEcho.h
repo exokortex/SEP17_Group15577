@@ -1,58 +1,50 @@
 //------------------------------------------------------------------------------
-// Command.h
+// CommandEcho.h
 //
 // Group: Group 15577, study assistant Roman Walch
 //
 // Authors: Johannes Haring 1611655
 //          Thomas Moder 1615103
 //          Verena Buder 1312723
-//          Tutors
 //------------------------------------------------------------------------------
 //
 
-#ifndef COMMAND_H_INCLUDED
-#define COMMAND_H_INCLUDED
+#ifndef COMMAND_ECHO_H_INCLUDED
+#define COMMAND_ECHO_H_INCLUDED
 
 #include <string>
 #include <vector>
+
+#include "Command.h"
 
 using std::string;
 using std::vector;
 
 class GameHandler;
 
-class Command
+class CommandEcho : public Command
 {
   private:
     //--------------------------------------------------------------------------
-    // Private copy constructor
+    // name of the command
     //
-    Command(const Command& original);
+    static const string NAME;
 
     //--------------------------------------------------------------------------
-    // Private assignment operator
+    // parameter seperator for output
     //
-    Command& operator=(const Command& original);
+    static const string SEPERATOR;
 
     //--------------------------------------------------------------------------
-    // Name of this command
+    // last output string
     //
-    string command_name_;
+    static const string TERMINAL_STRING;
 
   public:
-    static const int EXECUTION_RESULT_REQUEST_TERMINATION = -1;
-    static const int EXECUTION_RESULT_SUCCESS = 0;
-    static const int EXECUTION_RESULT_NO_SUCCESS = 1;
-
     //--------------------------------------------------------------------------
     // Constructor
     //
-    Command(string name);
-
-    //--------------------------------------------------------------------------
-    // Destructor
-    //
-    virtual ~Command();
+    CommandEcho();
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -64,12 +56,7 @@ class Command
     //         positive numbers: unsuccessful
     //         see Command::EXECUTION_RESULT_* for all options
     //
-    virtual int execute(GameHandler& game, vector<string>& params) = 0;
-
-    //--------------------------------------------------------------------------
-    // Getter Methods
-    //
-    const string& getName() const;
+    virtual int execute(GameHandler& game, vector<string>& params);
 };
 
-#endif //COMMAND_H_INCLUDED
+#endif //COMMAND_ECHO_H_INCLUDED

@@ -24,7 +24,7 @@ Command::~Command()
 }
 
 //------------------------------------------------------------------------------
-const string &Command::getName() const
+const string& Command::getName() const
 {
   return command_name_;
 }

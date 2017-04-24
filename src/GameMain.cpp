@@ -23,8 +23,12 @@ int main()
   GameUI* view = new GameUI(handler);
   //set View on Controller
   handler->setView(view);
-  //run View
+
+  //start program
   view->run();
+
+  delete handler;
+  delete view;
 
   return 0;
 }

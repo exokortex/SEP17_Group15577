@@ -13,8 +13,10 @@
 #define GAMEUI_H_INCLUDED
 
 #include <string>
+#include <vector>
 
 using std::string;
+using std::vector;
 
 class GameHandler;
 
@@ -49,6 +51,16 @@ class GameUI
     }
 
   private:
+    //--------------------------------------------------------------------------
+    // the command prompt
+    //
+    static const string CMD_PROMPT;
+
+    //--------------------------------------------------------------------------
+    // stringsplit into vecor of string
+    //
+    vector<string> split(const string& original, char separator);
+
     //--------------------------------------------------------------------------
     // The hold instance of the GameHandler
     //
