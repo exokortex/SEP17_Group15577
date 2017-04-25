@@ -18,6 +18,9 @@
 #include "GameHandler.h"
 #include "CommandQuit.h"
 #include "CommandEcho.h"
+#include "CommandQuote.h"
+#include "CommandBalance.h"
+#include "CommandRecipe.h"
 
 using std::cout;
 using std::cin;
@@ -56,7 +59,8 @@ void GameUI::run()
   string input_line;
 
   vector<Command*> commands =
-  { new CommandEcho(), new CommandQuit() };
+  { new CommandEcho(), new CommandQuit(), new CommandBalance(),
+      new CommandQuote(), new CommandRecipe() };
   vector<Command*>::iterator cmd;
 
   //command loop

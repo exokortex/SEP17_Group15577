@@ -16,6 +16,8 @@
 #include "GameHandler.h"
 
 const string CommandQuit::NAME = "quit";
+const string CommandQuit::USAGE_STRING =
+    "[ERR] Usage: quit\n";
 const string CommandQuit::MESSAGE = "Going out of business!\n";
 
 //------------------------------------------------------------------------------
@@ -27,6 +29,11 @@ CommandQuit::CommandQuit() :
 //------------------------------------------------------------------------------
 int CommandQuit::execute(GameHandler& game, vector<string>& params)
 {
+  if (params.size() != PARAMETER_COUNT)
+  {
+    game.output(USAGE_STRING);
+    return Command::EXECUTION_RESULT_NO_SUCCESS;
+  }
   game.output(MESSAGE);
   return Command::EXECUTION_RESULT_REQUEST_TERMINATION;
 }

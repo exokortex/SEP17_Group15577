@@ -26,9 +26,19 @@ class CommandQuit : public Command
 {
   private:
     //--------------------------------------------------------------------------
+    // number of parameters
+    //
+    static const int PARAMETER_COUNT = 0;
+
+    //--------------------------------------------------------------------------
     // name of the command
     //
     static const string NAME;
+
+    //--------------------------------------------------------------------------
+    // usage string
+    //
+    static const string USAGE_STRING;
 
     //--------------------------------------------------------------------------
     // the quit message
