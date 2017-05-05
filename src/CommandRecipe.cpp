@@ -37,6 +37,7 @@ int CommandRecipe::execute(GameHandler& game, vector<string>& params)
   int numbers[PARAMETER_COUNT];
   for (int i = 0; i < PARAMETER_COUNT; i++)
   {
+    // check for integers only
     for (unsigned int j = 0; j < params[i].length(); j++)
     {
       if (!std::isdigit(params[i][j]))
