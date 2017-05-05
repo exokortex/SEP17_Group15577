@@ -37,6 +37,14 @@ int CommandRecipe::execute(GameHandler& game, vector<string>& params)
   int numbers[PARAMETER_COUNT];
   for (int i = 0; i < PARAMETER_COUNT; i++)
   {
+    for (unsigned int j = 0; j < params[i].length(); j++)
+    {
+      if (!std::isdigit(params[i][j]))
+      {
+        game.output(USAGE_STRING);
+        return Command::EXECUTION_RESULT_NO_SUCCESS;
+      }
+    }
     try
     {
       numbers[i] = std::stoi(params[i]);
