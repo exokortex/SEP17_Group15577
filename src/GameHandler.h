@@ -72,9 +72,9 @@ class GameHandler
     //
     std::unique_ptr<GameUI> view_;
 
-    int recipeSugar_;
-    int recipeLemon_;
-    int recipeWater_;
+    int recipe_sugar_;
+    int recipe_lemon_;
+    int recipe_water_;
 
     int stockSugar_;
     int stockLemon_;
@@ -88,10 +88,9 @@ class GameHandler
     int expence_;
     int balance_;
 
-    EnvironmentalEngine* wheather_engine;
-    EnvironmentalCondition* current_weather;
-    EnvironmentalCondition* next_weather;
-
+    std::unique_ptr<EnvironmentalEngine> wheather_engine;
+    std::unique_ptr<EnvironmentalCondition> current_weather;
+    std::unique_ptr<EnvironmentalCondition> next_weather;
 
     vector<std::unique_ptr<Command>> commands_;
 
