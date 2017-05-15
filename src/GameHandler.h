@@ -76,8 +76,8 @@ class GameHandler
     int recipe_lemon_;
     int recipe_water_;
 
-    int stockSugar_;
-    int stockLemon_;
+    int stock_sugar_;
+    int stock_lemon_;
     int cache_;
 
     int price_lemonade_;
