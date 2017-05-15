@@ -102,8 +102,22 @@ void GameHandler::run()
 //------------------------------------------------------------------------------
 void GameHandler::play()
 {
-  int sell_factor = 100;
-  if (recipeSugar_ > 15)
+  //limonade
+
+  int sell_factor = 100; //%
+
+  //general factors
+  if (recipe_sugar_ > 20)
+    sell_factor -= 100;
+  else if (recipe_sugar_ > 15)
+    sell_factor -= 50;
+  if (recipe_lemon_ > 18)
+    sell_factor -= 100;
+  else if (recipe_lemon_ > 12)
+    sell_factor -= 50;
+  if (recipe_water_ > 98)
+    sell_factor -= 100;
+  else if (recipe_water_ > 95)
     sell_factor -= 50;
   // TODO implement logic
 
