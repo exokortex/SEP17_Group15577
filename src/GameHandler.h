@@ -88,7 +88,7 @@ class GameHandler
     int expence_;
     int balance_;
 
-    std::unique_ptr<EnvironmentalEngine> wheather_engine;
+    std::unique_ptr<EnvironmentalEngine> weather_engine;
     std::unique_ptr<EnvironmentalCondition> current_weather;
     std::unique_ptr<EnvironmentalCondition> next_weather;
 

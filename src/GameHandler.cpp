@@ -10,6 +10,7 @@
 //
 
 #include <stdlib.h>
+#include <memory>
 
 #include "GameHandler.h"
 #include "GameUI.h"
@@ -26,7 +27,9 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandQuote()));
   commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
 
-  wheather_engine = std::move(new EnvironmentalEngine());
+  weather_engine = std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine());
+  current_weather = weather_engine->createCondition();
+  next_weather = weather_engine->createCondition();
 }
 
 void GameHandler::setView(std::unique_ptr<GameUI> view)
@@ -104,13 +107,6 @@ void GameHandler::run()
 //------------------------------------------------------------------------------
 void GameHandler::play()
 {
-  int sell_factor = 100;
-  if (recipeSugar_ > 15)
-    sell_factor -= 50;
-  // TODO implement logic
 
-  sell_factor = std::max(sell_factor, -100);
-
-  // TODO: set income, expence, balance members
 }
 

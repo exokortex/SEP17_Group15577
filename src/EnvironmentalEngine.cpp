@@ -23,17 +23,23 @@ EnvironmentalEngine::EnvironmentalEngine()
 }
 
 //------------------------------------------------------------------------------
-EnvironmentalCondition *EnvironmentalEngine::createCondition()
+std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::createCondition()
 {
   // Generate and return random condition
-  return new EnvironmentalCondition(
-      EnvironmentalCondition::Cover(
-          rand() % EnvironmentalCondition::COVER_SIZE),
-      EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE),
-      static_cast<float>(rand()
-          % (EnvironmentalCondition::TEMP_MAX * TEMP_DECIMAL_PRECISION
-              - EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION + 1)
-          + EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION)
-          / TEMP_DECIMAL_PRECISION,
-      EnvironmentalCondition::Rank(rand() % EnvironmentalCondition::RANK_SIZE));
+  std::unique_ptr<EnvironmentalCondition> ptr(
+        new EnvironmentalCondition(
+            EnvironmentalCondition::Cover(
+                rand() % EnvironmentalCondition::COVER_SIZE),
+            EnvironmentalCondition::Rank(
+                rand() % EnvironmentalCondition::RANK_SIZE),
+            static_cast<float>(rand()
+                % (EnvironmentalCondition::TEMP_MAX * TEMP_DECIMAL_PRECISION
+                    - EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION
+                    + 1)
+                + EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION)
+                / TEMP_DECIMAL_PRECISION,
+            EnvironmentalCondition::Rank(
+                rand() % EnvironmentalCondition::RANK_SIZE)));
+
+  return ptr;
 }
