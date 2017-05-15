@@ -6,3 +6,5 @@ src/d?.zip
 src/*.o.d
 src/*.o
 src/basic
+src/Balance.html
+src/Environment.html

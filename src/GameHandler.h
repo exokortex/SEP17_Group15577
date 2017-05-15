@@ -15,15 +15,11 @@
 #include <string>
 #include <algorithm>
 #include <memory>
-
-#include "CommandQuit.h"
-#include "CommandEcho.h"
-#include "CommandQuote.h"
-#include "CommandBalance.h"
-#include "CommandRecipe.h"
+#include <vector>
 
 #include "EnvironmentalEngine.h"
 #include "EnvironmentalCondition.h"
+#include "Command.h"
 
 using std::string;
 using std::vector;
@@ -63,6 +59,15 @@ class GameHandler
     //
     void play();
 
+    void viewUpdateBalance();
+
+    void viewUpdateEnvironment();
+
+    //--------------------------------------------------------------------------
+    // Setters
+    //
+    void setNextWeather(std::unique_ptr<EnvironmentalCondition> next_weather);
+
   private:
     static const int BASE_SUGAR = 6;
     static const int BASE_LEMON = 6;
@@ -78,7 +83,7 @@ class GameHandler
 
     int stock_sugar_;
     int stock_lemon_;
-    int cache_;
+    int stock_cash_;
 
     int price_lemonade_;
     int price_lemon_;
@@ -88,9 +93,9 @@ class GameHandler
     int expence_;
     int balance_;
 
-    std::unique_ptr<EnvironmentalEngine> wheather_engine;
-    std::unique_ptr<EnvironmentalCondition> current_weather;
-    std::unique_ptr<EnvironmentalCondition> next_weather;
+    std::unique_ptr<EnvironmentalEngine> weather_engine_;
+    std::unique_ptr<EnvironmentalCondition> current_weather_;
+    std::unique_ptr<EnvironmentalCondition> next_weather_;
 
     vector<std::unique_ptr<Command>> commands_;
 

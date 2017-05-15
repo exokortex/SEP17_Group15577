@@ -12,6 +12,8 @@
 #ifndef ENVIRONMENTALENGINE_H_INCLUDED
 #define ENVIRONMENTALENGINE_H_INCLUDED
 
+#include <memory>
+
 class EnvironmentalCondition;
 
 //------------------------------------------------------------------------------
@@ -37,7 +39,7 @@ class EnvironmentalEngine
     //--------------------------------------------------------------------------
     // Creates a new random Environmental condition.
     //
-    EnvironmentalCondition *createCondition();
+    std::unique_ptr<EnvironmentalCondition> createCondition();
 };
 
 #endif /* ENVIRONMENTALENGINE_H_INCLUDED */
