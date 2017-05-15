@@ -45,7 +45,7 @@ class GameUI
     //--------------------------------------------------------------------------
     // Getter Methods
     //
-    GameHandler* getHandler() const
+    inline GameHandler* getHandler() const
     {
       return handler_;
     }

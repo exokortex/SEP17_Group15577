@@ -119,19 +119,19 @@ class EnvironmentalCondition
     //--------------------------------------------------------------------------
     // Setter Methods
     //
-    void setSkyCover(Cover cover)
+    inline void setSkyCover(Cover cover)
     {
       sky_cover_ = cover;
     }
-    void setPrecipitation(Rank rank)
+    inline void setPrecipitation(Rank rank)
     {
       precipitation_ = rank;
     }
-    void setTemperature(float temperature)
+    inline void setTemperature(float temperature)
     {
       temperature_ = temperature;
     }
-    void setWind(Rank rank)
+    inline void setWind(Rank rank)
     {
       wind_ = rank;
     }
@@ -139,19 +139,19 @@ class EnvironmentalCondition
     //--------------------------------------------------------------------------
     // Getter Methods
     //
-    Cover getSkyCover() const
+    inline Cover getSkyCover() const
     {
       return sky_cover_;
     }
-    Rank getPrecipitation() const
+    inline Rank getPrecipitation() const
     {
       return precipitation_;
     }
-    float getTemperature() const
+    inline float getTemperature() const
     {
       return temperature_;
     }
-    Rank getWind() const
+    inline Rank getWind() const
     {
       return wind_;
     }

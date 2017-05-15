@@ -39,7 +39,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // Setter Methods
     //
-    void setView(GameUI* view)
+    inline void setView(GameUI* view)
     {
       this->view_ = view;
     }
