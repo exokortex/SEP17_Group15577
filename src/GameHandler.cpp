@@ -25,6 +25,8 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandBalance()));
   commands_.push_back(std::unique_ptr<Command>(new CommandQuote()));
   commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
+
+  wheather_engine = std::move(new EnvironmentalEngine());
 }
 
 void GameHandler::setView(std::unique_ptr<GameUI> view)
