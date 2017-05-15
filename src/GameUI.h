@@ -30,7 +30,7 @@ class GameUI
     //--------------------------------------------------------------------------
     // Constructor
     //
-    GameUI(GameHandler* handler);
+    GameUI();
 
     //--------------------------------------------------------------------------
     // Prints a given output
@@ -42,24 +42,11 @@ class GameUI
     //
     string nextUserCommand();
 
-    //--------------------------------------------------------------------------
-    // Getter Methods
-    //
-    inline GameHandler* getHandler() const
-    {
-      return handler_;
-    }
-
   private:
     //--------------------------------------------------------------------------
     // the command prompt
     //
     static const string CMD_PROMPT;
-
-    //--------------------------------------------------------------------------
-    // The hold instance of the GameHandler
-    //
-    GameHandler* handler_;
 };
 
 #endif /* GAMEUI_H_INCLUDED */

@@ -21,6 +21,12 @@ GameHandler::GameHandler()
   //nothing to do
 }
 
+
+void GameHandler::setView(std::unique_ptr<GameUI> view)
+{
+  this->view_ = std::move(view);
+}
+
 //------------------------------------------------------------------------------
 void GameHandler::output(string output)
 {

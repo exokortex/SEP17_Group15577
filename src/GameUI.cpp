@@ -23,10 +23,8 @@ using std::string;
 const string GameUI::CMD_PROMPT = "sep> ";
 
 //------------------------------------------------------------------------------
-GameUI::GameUI(GameHandler* handler)
+GameUI::GameUI()
 {
-  //create game handler and set this instance as View
-  this->handler_ = handler;
 }
 
 //------------------------------------------------------------------------------
@@ -34,7 +32,6 @@ void GameUI::output(string output)
 {
   cout << output;
 }
-
 
 //------------------------------------------------------------------------------
 string GameUI::nextUserCommand()

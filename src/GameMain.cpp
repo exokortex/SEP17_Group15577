@@ -10,25 +10,24 @@
 //
 
 #include <iostream>
+#include <memory>
 
 #include "GameHandler.h"
 #include "GameUI.h"
 
 int main()
 {
-  //create game Controller object reference
-  GameHandler* handler = new GameHandler();
+  // create game Controller object reference
+  std::unique_ptr<GameHandler> handler ( new GameHandler() );
 
-  //create game View object reference
-  GameUI* view = new GameUI(handler);
-  //set View on Controller
-  handler->setView(view);
+  // create game View object reference
+  std::unique_ptr<GameUI> view ( new GameUI() );
 
-  //start program
+  // set View on Controller
+  handler->setView(std::move(view));
+
+  // start program
   handler->run();
-
-  delete handler;
-  delete view;
 
   return 0;
 }

@@ -14,6 +14,7 @@
 
 #include <string>
 #include <algorithm>
+#include <memory>
 
 #include "CommandQuit.h"
 #include "CommandEcho.h"
@@ -47,10 +48,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // Setter Methods
     //
-    inline void setView(GameUI* view)
-    {
-      this->view_ = view;
-    }
+    void setView(std::unique_ptr<GameUI> view);
 
     //--------------------------------------------------------------------------
     // Runs the game
@@ -58,15 +56,27 @@ class GameHandler
     void run();
 
   private:
+    static const int BASE_SUGAR = 6;
+    static const int BASE_LEMON = 6;
+    static const int BASE_WATERW = 88;
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
-    GameUI* view_ = NULL;
+    std::unique_ptr<GameUI> view_;
 
     //--------------------------------------------------------------------------
     // stringsplit into vecor of string
     //
     vector<string> split(const string& original, char separator);
+
+    int recipeSugar_;
+    int recipeLemon_;
+    int recipeWater_;
+
+    int stockSugar_;
+    int stockLemon_;
+    int cache_;
+
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */
