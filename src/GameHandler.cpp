@@ -107,6 +107,43 @@ void GameHandler::run()
 //------------------------------------------------------------------------------
 void GameHandler::play()
 {
+  //limonade
+
+  int sell_factor = 100; //%
+
+  if (current_weather->isItHot())
+  {
+    //hot weather
+    if (recipe_sugar_ < BASE_SUGAR)
+      sell_factor += 20;
+    else if (recipe_sugar_ > BASE_SUGAR)
+      sell_factor -= 20;
+    if (recipe_lemon_ > BASE_LEMON)
+      sell_factor += 20;
+  }
+  else if (current_weather->isItCold())
+  {
+    //cold weather
+    if (recipe_sugar_ > BASE_SUGAR)
+      sell_factor += 20;
+    else if (recipe_sugar_ < BASE_SUGAR)
+      sell_factor -= 20;
+    if (recipe_lemon_ > BASE_LEMON)
+      sell_factor -= 20;
+  }
+  //general factors
+  if (recipe_sugar_ > 20)
+    sell_factor -= 100;
+  else if (recipe_sugar_ > 15)
+    sell_factor -= 50;
+  if (recipe_lemon_ > 18)
+    sell_factor -= 100;
+  else if (recipe_lemon_ > 12)
+    sell_factor -= 50;
+  if (recipe_water_ > 98)
+    sell_factor -= 100;
+  else if (recipe_water_ > 95)
+    sell_factor -= 50;
 
 }
 

@@ -28,6 +28,12 @@ bool EnvironmentalCondition::isItHot()
 }
 
 //------------------------------------------------------------------------------
+bool EnvironmentalCondition::isItCold()
+{
+  return temperature_ <= TEMP_LOWERTHIRD;
+}
+
+//------------------------------------------------------------------------------
 bool EnvironmentalCondition::isItRainy()
 {
   return (precipitation_ == MEDIUM || precipitation_ == HIGH)

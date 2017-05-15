@@ -40,6 +40,12 @@ class EnvironmentalCondition
         + TEMP_MIN;
 
     //--------------------------------------------------------------------------
+    // The threshold for the lower third of the temperature specturm
+    //
+    const float TEMP_LOWERTHIRD = (TEMP_MAX - TEMP_MIN) / 3.0f
+        + TEMP_MIN;
+
+    //--------------------------------------------------------------------------
     // The size of the Cover enum
     //
     static const int COVER_SIZE = 4;
@@ -82,6 +88,13 @@ class EnvironmentalCondition
     //         the upper third of the specturm
     //
     bool isItHot();
+
+    //--------------------------------------------------------------------------
+    // isItCold
+    // @return Returns true if temperature is in
+    //         the lower third of the specturm
+    //
+    bool isItCold();
 
     //--------------------------------------------------------------------------
     // isItRainy
