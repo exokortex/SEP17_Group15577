@@ -166,5 +166,20 @@ void GameHandler::play()
   else if (recipe_water_ > 95)
     sell_factor -= 50;
 
+  viewUpdateBalance();
+  viewUpdateEnvironment();
+  next_weather_ = weather_engine_->createCondition();
 }
+
+
+void GameHandler::viewUpdateBalance() {
+  view_->ouputBalance(stock_lemon_, stock_sugar_, stock_cash_, balance_);
+}
+
+void GameHandler::viewUpdateEnvironment() {
+  view_->ouputEnvironment(*next_weather_);
+}
+
+
+
 

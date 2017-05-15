@@ -59,6 +59,10 @@ class GameHandler
     //
     void play();
 
+    void viewUpdateBalance();
+
+    void viewUpdateEnvironment();
+
     //--------------------------------------------------------------------------
     // Setters
     //
@@ -79,7 +83,7 @@ class GameHandler
 
     int stock_sugar_;
     int stock_lemon_;
-    int cache_;
+    int stock_cash_;
 
     int price_lemonade_;
     int price_lemon_;

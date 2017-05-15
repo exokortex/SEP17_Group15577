@@ -14,6 +14,10 @@
 
 #include <string>
 #include <vector>
+#include <memory>
+
+#include "HTMLWriterBalance.h"
+#include "HTMLWriterEnvironment.h"
 
 using std::string;
 using std::vector;
@@ -38,6 +42,16 @@ class GameUI
     void output(string output);
 
     //--------------------------------------------------------------------------
+    // Writes the balance file
+    //
+    void ouputBalance(int lemon, int sugar, int cash, int delta);
+
+    //--------------------------------------------------------------------------
+    // Writes the balance file
+    //
+    void ouputEnvironment(EnvironmentalCondition& ec);
+
+    //--------------------------------------------------------------------------
     // Reads a new command
     //
     string nextUserCommand();
@@ -47,6 +61,9 @@ class GameUI
     // the command prompt
     //
     static const string CMD_PROMPT;
+
+    std::unique_ptr<HTMLWriterBalance> writer_balance_;
+    std::unique_ptr<HTMLWriterEnvironment> writer_environment_;
 };
 
 #endif /* GAMEUI_H_INCLUDED */

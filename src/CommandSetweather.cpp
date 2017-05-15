@@ -35,22 +35,22 @@ int CommandSetweather::execute(GameHandler& game, vector<string>& params)
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
 
-  int sky_cover_int;
-  int precipitation_int;
-  float temperature;
-  int wind_int;
+  int sky_cover_int = 0;
+  int precipitation_int = 0;
+  float temperature = 0;
+  int wind_int = 0;
 
   if (!StringUtil::strictParseInt(params[0], &sky_cover_int)
-      || sky_cover_int < 0
+     || sky_cover_int < 0
       || sky_cover_int >= EnvironmentalCondition::COVER_SIZE
       || !StringUtil::strictParseInt(params[1], &precipitation_int)
-      || precipitation_int < 0
+  || precipitation_int < 0
       || precipitation_int >= EnvironmentalCondition::RANK_SIZE
       || !StringUtil::strictParseFloat(params[2], &temperature)
-      || temperature < EnvironmentalCondition::TEMP_MIN
-      || temperature > EnvironmentalCondition::TEMP_MAX
+  || temperature < EnvironmentalCondition::TEMP_MIN
+     || temperature > EnvironmentalCondition::TEMP_MAX
       || !StringUtil::strictParseInt(params[3], &wind_int) || wind_int < 0
-      || wind_int >= EnvironmentalCondition::COVER_SIZE)
+          || wind_int >= EnvironmentalCondition::COVER_SIZE)
   {
     game.output(USAGE_STRING);
     return Command::EXECUTION_RESULT_NO_SUCCESS;
@@ -66,6 +66,8 @@ int CommandSetweather::execute(GameHandler& game, vector<string>& params)
       std::unique_ptr<EnvironmentalCondition>(
           new EnvironmentalCondition(sky_cover, precipitation, temperature,
               wind)));
+
+  game.viewUpdateEnvironment();
 
   return Command::EXECUTION_RESULT_SUCCESS;
 }

@@ -25,12 +25,28 @@ const string GameUI::CMD_PROMPT = "sep> ";
 //------------------------------------------------------------------------------
 GameUI::GameUI()
 {
+  writer_balance_ = std::unique_ptr<HTMLWriterBalance>(
+      new HTMLWriterBalance("Balance.html"));
+  writer_environment_ = std::unique_ptr<HTMLWriterEnvironment>(
+      new HTMLWriterEnvironment("Environment.html"));
 }
 
 //------------------------------------------------------------------------------
 void GameUI::output(string output)
 {
   cout << output;
+}
+
+//------------------------------------------------------------------------------
+void GameUI::ouputBalance(int lemon, int sugar, int cash, int balance)
+{
+  writer_balance_->writeFile(lemon, sugar, cash, balance);
+}
+
+//------------------------------------------------------------------------------
+void GameUI::ouputEnvironment(EnvironmentalCondition& ec)
+{
+  writer_environment_->writeFile(ec);
 }
 
 //------------------------------------------------------------------------------

@@ -22,7 +22,7 @@ class CommandSetweather : public Command
     //--------------------------------------------------------------------------
     // number of parameters
     //
-    static const int PARAMETER_COUNT = 3;
+    static const int PARAMETER_COUNT = 4;
 
     //--------------------------------------------------------------------------
     // name of the command
