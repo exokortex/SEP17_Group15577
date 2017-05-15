@@ -12,13 +12,7 @@
 #ifndef COMMAND_RECIPE_H_INCLUDED
 #define COMMAND_RECIPE_H_INCLUDED
 
-#include <string>
-#include <vector>
-
 #include "Command.h"
-
-using std::string;
-using std::vector;
 
 class GameHandler;
 

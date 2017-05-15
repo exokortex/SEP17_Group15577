@@ -12,12 +12,7 @@
 #ifndef COMMAND_QUOTE_H_INCLUDED
 #define COMMAND_QUOTE_H_INCLUDED
 
-#include <string>
-#include <vector>
-
 #include "Command.h"
-
-using std::string;
 
 class GameHandler;
 

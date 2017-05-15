@@ -20,6 +20,7 @@ const string CommandBalance::NAME = "balance";
 const string CommandBalance::USAGE_STRING =
     "[ERR] Usage: balance\n";
 
+//------------------------------------------------------------------------------
 CommandBalance::CommandBalance():
     Command(NAME)
 {
