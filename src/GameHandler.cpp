@@ -78,7 +78,9 @@ vector<string> GameHandler::split(const string& original, char separator)
     start = next + 1;
     next = std::find(start, end, separator);
   }
-  results.push_back(std::string(start, next));
+  // ignore empty parts
+  if (start != next)
+    results.push_back(std::string(start, next));
   return results;
 }
 
@@ -96,6 +98,11 @@ void GameHandler::run()
 
     //process input_line
     vector<string> params = split(input_line, ' ');
+
+    // ignore empty lines
+    if (params.size() == 0)
+      continue;
+
     string command = params[0];
 
     // transform command to lowercase to be case insensitive
@@ -119,7 +126,7 @@ void GameHandler::run()
       }
     }
     // display error if command is unknown
-    if (cmd == commands_.end() && command != "")
+    if (cmd == commands_.end())
       view_->output("[ERR] Unknown command.\n");
   }
 }
@@ -171,14 +178,13 @@ void GameHandler::play()
 
   int customers = 500;
 
-  if(current_weather_->isItHot())
+  if (current_weather_->isItHot())
     customers *= 1.5;
-  else if(current_weather_->getSkyCover()
-      == EnvironmentalCondition::OVERCAST)
+  else if (current_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
     customers *= 0.8;
-  else if(current_weather_->isItStormy())
+  else if (current_weather_->isItStormy())
     customers *= 0.1;
-  else if(current_weather_->isItRainy())
+  else if (current_weather_->isItRainy())
     customers *= 0.5;
 
   //consumption
@@ -186,7 +192,7 @@ void GameHandler::play()
   //take # of customers or cache, whichever is lower
   int consumption = std::min(customers, stock_cash_);
   //find next |4 value for consumption
-  while(consumption % 4 != 0)
+  while (consumption % 4 != 0)
     consumption++;
 
   //reduce cache
@@ -202,15 +208,13 @@ void GameHandler::play()
   next_weather_ = weather_engine_->createCondition();
 }
 
-
-void GameHandler::viewUpdateBalance() {
+void GameHandler::viewUpdateBalance()
+{
   view_->ouputBalance(stock_lemon_, stock_sugar_, stock_cash_, balance_);
 }
 
-void GameHandler::viewUpdateEnvironment() {
+void GameHandler::viewUpdateEnvironment()
+{
   view_->ouputEnvironment(*next_weather_);
 }
-
-
-
 

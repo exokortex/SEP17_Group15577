@@ -19,6 +19,7 @@
 
 const string CommandBuy::NAME = "buy";
 const string CommandBuy::USAGE_STRING = "[ERR] Usage: buy <lemon> <sugar>\n";
+const string CommandBuy::ERROR_WRONG_PARAM = "[ERR] Wrong parameter.\n";
 const string CommandBuy::ERROR_NOT_ENOUGH_MONEY =
     "[WARN] Not enough money. I buy what I can.\n";
 
@@ -43,19 +44,28 @@ int CommandBuy::execute(GameHandler& game, vector<string>& params)
   if (!StringUtil::strictParseInt(params[0], &lemon) || lemon < 0
       || !StringUtil::strictParseInt(params[1], &sugar) || sugar < 0)
   {
-    game.output(USAGE_STRING);
+    game.output(ERROR_WRONG_PARAM);
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
 
   int total_cost;
+  bool reduction_necessary = false;
+  bool reduce_lemon = true;
   // reduce amount until price is payable
   // TODO: fix problem with buying multiple times in the same round
   while ((total_cost = lemon * game.getPriceLemon()
       + sugar * game.getPriceSugar() + game.getExpence()) > game.getStockCash())
   {
-    lemon = std::max(0, lemon - 1);
-    sugar = std::max(0, sugar - 1);
+    if (reduce_lemon)
+      lemon = std::max(0, lemon - 1);
+    else
+      sugar = std::max(0, sugar - 1);
+    reduction_necessary = true;
+    reduce_lemon = !reduce_lemon;
   }
+
+  if (reduction_necessary)
+    game.output(ERROR_NOT_ENOUGH_MONEY);
 
   game.setExpence(total_cost);
   game.setStockLemon(game.getStockLemon() + lemon);
