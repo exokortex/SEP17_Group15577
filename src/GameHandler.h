@@ -77,6 +77,8 @@ class GameHandler
     int stockLemon_;
     int cache_;
 
+    vector<std::unique_ptr<Command>> commands_;
+
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */

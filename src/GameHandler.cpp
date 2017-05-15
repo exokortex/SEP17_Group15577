@@ -18,9 +18,12 @@
 //------------------------------------------------------------------------------
 GameHandler::GameHandler()
 {
-  //nothing to do
+  commands_.push_back(std::unique_ptr<Command>(new CommandEcho()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandQuit()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandBalance()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandQuote()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
 }
-
 
 void GameHandler::setView(std::unique_ptr<GameUI> view)
 {
@@ -57,10 +60,7 @@ void GameHandler::run()
 {
   string input_line;
 
-  vector<Command*> commands =
-  { new CommandEcho(), new CommandQuit(), new CommandBalance(),
-      new CommandQuote(), new CommandRecipe() };
-  vector<Command*>::iterator cmd;
+  vector<std::unique_ptr<Command>>::iterator cmd;
 
   //command loop
   while (true)
@@ -78,7 +78,7 @@ void GameHandler::run()
     params.erase(params.begin());
 
     // find and execute the correct command
-    for (cmd = commands.begin(); cmd != commands.end(); cmd++)
+    for (cmd = commands_.begin(); cmd != commands_.end(); cmd++)
     {
       if ((*cmd)->getName() == command)
       {
@@ -86,11 +86,6 @@ void GameHandler::run()
         // terminate if requested
         if (result == Command::EXECUTION_RESULT_REQUEST_TERMINATION)
         {
-          // delete Command objects
-          for (unsigned int idx = 0; idx < commands.size(); idx++)
-          {
-            delete commands[idx];
-          }
           return;
         }
         break;
