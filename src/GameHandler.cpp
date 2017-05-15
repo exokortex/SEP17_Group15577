@@ -25,8 +25,8 @@
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
-    price_lemonade_(price_lemonade), price_lemon_(price_lemon),
-    price_sugar_(price_sugar)
+    price_lemonade_(price_lemonade), price_lemon_(price_lemon), price_sugar_(
+        price_sugar)
 {
   commands_.push_back(std::unique_ptr<Command>(new CommandEcho()));
   commands_.push_back(std::unique_ptr<Command>(new CommandQuit()));
@@ -35,7 +35,8 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
   commands_.push_back(std::unique_ptr<Command>(new CommandSetweather()));
 
-  weather_engine_ = std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine());
+  weather_engine_ = std::unique_ptr<EnvironmentalEngine>(
+      new EnvironmentalEngine());
   current_weather_ = weather_engine_->createCondition();
   next_weather_ = weather_engine_->createCondition();
 }
@@ -46,8 +47,8 @@ void GameHandler::setView(std::unique_ptr<GameUI> view)
   this->view_ = std::move(view);
 }
 
-
-void GameHandler::setNextWeather(std::unique_ptr<EnvironmentalCondition> next_weather)
+void GameHandler::setNextWeather(
+    std::unique_ptr<EnvironmentalCondition> next_weather)
 {
   next_weather_ = std::move(next_weather);
 }
@@ -114,8 +115,13 @@ void GameHandler::run()
       }
     }
     // TODO: maybe replace with command class
-    if ((*cmd)->getName() == "play")
+    if (command == "play")
+    {
       play();
+      continue;
+    }
+    if (cmd == commands_.end() && command != "")
+      ; // TODO print command not found
   }
 }
 
