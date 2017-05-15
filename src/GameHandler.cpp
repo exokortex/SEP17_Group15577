@@ -144,6 +144,33 @@ void GameHandler::play()
 
   sell_factor = std::max(sell_factor, -100);
 
-  // TODO: set income, expence, balance members
+  //customers
+
+  int customers = 500;
+
+  if(current_weather->isItHot())
+    customers *= 1.5;
+  else if(current_weather->getSkyCover() == EnvironmentalCondition::OVERCAST)
+    customers *= 0.8;
+  else if(current_weather->isItStormy())
+    customers *= 0.1;
+  else if(current_weather->isItRainy())
+    customers *= 0.5;
+
+  //consumption
+
+  //take # of customers or cache, whichever is lower
+  int consumption = std::min(customers, cache_);
+  //find next |4 value for consumption
+  while(consumption % 4 != 0)
+    consumption++;
+
+  //reduce cache
+  cache_ -= consumption;
+
+  //calc new income, expence and balance members
+  income_ = consumption * price_lemonade_;
+  expence_ = 0; //TODO!!!!!
+  balance_ = income_ - expence_;
 }
 
