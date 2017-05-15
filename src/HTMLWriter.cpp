@@ -26,6 +26,9 @@ void HTMLWriter::writeFile(std::string body)
   std::ofstream file;
   file.open(this->filename_);
 
+  if (!file.is_open())
+    return; // there was no error message specified
+
   file << "<!DOCTYPE html>\n"
       "<html lang=\"en\">\n"
       "  <head>\n"
@@ -40,6 +43,9 @@ void HTMLWriter::writeFile(std::string body)
       "  </head>\n"
       "  <body>\n" << body << "</body>\n"
       "</html>\n";
+
+  if (file.bad())
+    return; // there was no error message specified
 
   file.close();
 }
