@@ -150,7 +150,8 @@ void GameHandler::play()
 
   if(current_weather->isItHot())
     customers *= 1.5;
-  else if(current_weather->getSkyCover() == EnvironmentalCondition::OVERCAST)
+  else if(current_weather->getSkyCover()
+      == EnvironmentalCondition::OVERCAST)
     customers *= 0.8;
   else if(current_weather->isItStormy())
     customers *= 0.1;
