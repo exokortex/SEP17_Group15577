@@ -22,6 +22,8 @@
 #include "CommandBalance.h"
 #include "CommandRecipe.h"
 #include "CommandSetweather.h"
+#include "CommandBuy.h"
+#include "CommandPlay.h"
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
@@ -34,6 +36,8 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandQuote()));
   commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
   commands_.push_back(std::unique_ptr<Command>(new CommandSetweather()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandBuy()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandPlay()));
 
   weather_engine_ = std::unique_ptr<EnvironmentalEngine>(
       new EnvironmentalEngine());
@@ -114,14 +118,9 @@ void GameHandler::run()
         break;
       }
     }
-    // TODO: maybe replace with command class
-    if (command == "play")
-    {
-      play();
-      continue;
-    }
+    // display error if command is unknown
     if (cmd == commands_.end() && command != "")
-      ; // TODO print command not found
+      view_->output("[ERR] Unknown command.\n");
   }
 }
 

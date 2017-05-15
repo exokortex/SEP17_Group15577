@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// CommandRecipe.h
+// CommandBuy.h
 //
 // Group: Group 15577, study assistant Roman Walch
 //
@@ -9,31 +9,20 @@
 //------------------------------------------------------------------------------
 //
 
-#ifndef COMMAND_RECIPE_H_INCLUDED
-#define COMMAND_RECIPE_H_INCLUDED
+#ifndef COMMAND_BUY_H_INCLUDED
+#define COMMAND_BUY_H_INCLUDED
 
 #include "Command.h"
 
 class GameHandler;
 
-class CommandRecipe : public Command
+class CommandBuy : public Command
 {
   private:
     //--------------------------------------------------------------------------
     // number of parameters
     //
-    static const int PARAMETER_COUNT = 3;
-
-    //--------------------------------------------------------------------------
-    // lemon must be multiple of this
-    //
-    static const int LEMON_MULTIPLES = 3;
-
-    //--------------------------------------------------------------------------
-    // sugar must be multiple of this
-    //
-    //
-    static const int SUGAR_MULTIPLES = 2;
+    static const int PARAMETER_COUNT = 2;
 
     //--------------------------------------------------------------------------
     // name of the command
@@ -46,19 +35,9 @@ class CommandRecipe : public Command
     static const string USAGE_STRING;
 
     //--------------------------------------------------------------------------
-    // error string for wrong sum
+    // error string for not enough money
     //
-    static const string ERROR_SUM;
-
-    //--------------------------------------------------------------------------
-    // error string for wrong lemon
-    //
-    static const string ERROR_LEMON;
-
-    //--------------------------------------------------------------------------
-    // error string for wrong sugar
-    //
-    static const string ERROR_SUGAR;
+    static const string ERROR_NOT_ENOUGH_MONEY;
 
     //--------------------------------------------------------------------------
     // the sum of all arguments
@@ -69,7 +48,7 @@ class CommandRecipe : public Command
     //--------------------------------------------------------------------------
     // Constructor
     //
-    CommandRecipe();
+    CommandBuy();
 
     //--------------------------------------------------------------------------
     // Executes the command.
@@ -84,4 +63,4 @@ class CommandRecipe : public Command
     virtual int execute(GameHandler& game, vector<string>& params);
 };
 
-#endif //COMMAND_RECIPE_H_INCLUDED
+#endif //COMMAND_BUY_H_INCLUDED

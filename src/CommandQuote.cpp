@@ -35,8 +35,8 @@ int CommandQuote::execute(GameHandler& game, vector<string>& params)
   }
   std::ostringstream out;
   {
-    out << "L: 100 $\n";
-    out << "S: 100 $\n";
+    out << "L: "<<game.getPriceLemon()<<" $\n";
+    out << "S: "<<game.getPriceSugar()<<" $\n";
   }
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;

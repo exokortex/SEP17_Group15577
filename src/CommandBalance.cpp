@@ -17,11 +17,10 @@
 #include "GameHandler.h"
 
 const string CommandBalance::NAME = "balance";
-const string CommandBalance::USAGE_STRING =
-    "[ERR] Usage: balance\n";
+const string CommandBalance::USAGE_STRING = "[ERR] Usage: balance\n";
 
 //------------------------------------------------------------------------------
-CommandBalance::CommandBalance():
+CommandBalance::CommandBalance() :
     Command(NAME)
 {
 }
@@ -36,10 +35,10 @@ int CommandBalance::execute(GameHandler& game, vector<string>& params)
   }
   std::ostringstream out;
   {
-    out << "L: 100\n";
-    out << "S: 100\n";
+    out << "L: " << game.getStockLemon() << "\n";
+    out << "S: " << game.getStockSugar() << "\n";
     out << "----------\n";
-    out << "C: 1000 $\n";
+    out << "C: " << game.getStockCash() << " $\n";
   }
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;

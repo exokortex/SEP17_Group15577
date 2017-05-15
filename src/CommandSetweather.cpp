@@ -41,16 +41,16 @@ int CommandSetweather::execute(GameHandler& game, vector<string>& params)
   int wind_int = 0;
 
   if (!StringUtil::strictParseInt(params[0], &sky_cover_int)
-     || sky_cover_int < 0
+      || sky_cover_int < 0
       || sky_cover_int >= EnvironmentalCondition::COVER_SIZE
       || !StringUtil::strictParseInt(params[1], &precipitation_int)
-  || precipitation_int < 0
+      || precipitation_int < 0
       || precipitation_int >= EnvironmentalCondition::RANK_SIZE
       || !StringUtil::strictParseFloat(params[2], &temperature)
-  || temperature < EnvironmentalCondition::TEMP_MIN
-     || temperature > EnvironmentalCondition::TEMP_MAX
+      || temperature < EnvironmentalCondition::TEMP_MIN
+      || temperature > EnvironmentalCondition::TEMP_MAX
       || !StringUtil::strictParseInt(params[3], &wind_int) || wind_int < 0
-          || wind_int >= EnvironmentalCondition::COVER_SIZE)
+      || wind_int >= EnvironmentalCondition::COVER_SIZE)
   {
     game.output(USAGE_STRING);
     return Command::EXECUTION_RESULT_NO_SUCCESS;
