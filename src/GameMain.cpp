@@ -25,7 +25,7 @@ int main()
   handler->setView(view);
 
   //start program
-  view->run();
+  handler->run();
 
   delete handler;
   delete view;

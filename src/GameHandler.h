@@ -13,8 +13,16 @@
 #define GAMEHANDLER_H_INCLUDED
 
 #include <string>
+#include <algorithm>
+
+#include "CommandQuit.h"
+#include "CommandEcho.h"
+#include "CommandQuote.h"
+#include "CommandBalance.h"
+#include "CommandRecipe.h"
 
 using std::string;
+using std::vector;
 
 class GameUI;
 class Command;
@@ -44,11 +52,21 @@ class GameHandler
       this->view_ = view;
     }
 
+    //--------------------------------------------------------------------------
+    // Runs the game
+    //
+    void run();
+
   private:
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
     GameUI* view_ = NULL;
+
+    //--------------------------------------------------------------------------
+    // stringsplit into vecor of string
+    //
+    vector<string> split(const string& original, char separator);
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */

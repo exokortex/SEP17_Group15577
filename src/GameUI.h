@@ -33,14 +33,14 @@ class GameUI
     GameUI(GameHandler* handler);
 
     //--------------------------------------------------------------------------
-    // Runs the UI process
-    //
-    void run();
-
-    //--------------------------------------------------------------------------
     // Prints a given output
     //
     void output(string output);
+
+    //--------------------------------------------------------------------------
+    // Reads a new command
+    //
+    string nextUserCommand();
 
     //--------------------------------------------------------------------------
     // Getter Methods
@@ -55,11 +55,6 @@ class GameUI
     // the command prompt
     //
     static const string CMD_PROMPT;
-
-    //--------------------------------------------------------------------------
-    // stringsplit into vecor of string
-    //
-    vector<string> split(const string& original, char separator);
 
     //--------------------------------------------------------------------------
     // The hold instance of the GameHandler
