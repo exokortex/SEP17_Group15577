@@ -2,5 +2,7 @@
 .project
 .settings/
 /Debug/
-src/main
 src/d?.zip
+src/*.o.d
+src/*.o
+src/basic
