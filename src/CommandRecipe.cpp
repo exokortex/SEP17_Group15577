@@ -15,6 +15,7 @@
 #include "CommandRecipe.h"
 #include "Command.h"
 #include "GameHandler.h"
+#include "StringUtil.h"
 
 const string CommandRecipe::NAME = "recipe";
 const string CommandRecipe::USAGE_STRING =
@@ -37,27 +38,9 @@ int CommandRecipe::execute(GameHandler& game, vector<string>& params)
   int numbers[PARAMETER_COUNT];
   for (int i = 0; i < PARAMETER_COUNT; i++)
   {
-    // check for integers only
-    for (unsigned int j = 0; j < params[i].length(); j++)
+    if (!StringUtil::strictParseInt(params[i], &(numbers[i])) || numbers[i] < 0)
     {
-      if (!std::isdigit(params[i][j]))
-      {
-        game.output(USAGE_STRING);
-        return Command::EXECUTION_RESULT_NO_SUCCESS;
-      }
-    }
-    try
-    {
-      numbers[i] = std::stoi(params[i]);
-    }
-    catch (const std::exception& e)
-    {
-      // catch std::invalid_argument or std::out_of_range
-      game.output(USAGE_STRING);
-      return Command::EXECUTION_RESULT_NO_SUCCESS;
-    }
-    if (numbers[i] < 0)
-    {
+      // if param is not strictly a number or lower zero
       game.output(USAGE_STRING);
       return Command::EXECUTION_RESULT_NO_SUCCESS;
     }

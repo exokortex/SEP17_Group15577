@@ -16,7 +16,9 @@
 #include "Command.h"
 
 //------------------------------------------------------------------------------
-GameHandler::GameHandler()
+GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
+    price_lemonade_(price_lemonade), price_lemon_(price_lemon),
+    price_sugar_(price_sugar)
 {
   commands_.push_back(std::unique_ptr<Command>(new CommandEcho()));
   commands_.push_back(std::unique_ptr<Command>(new CommandQuit()));
@@ -91,5 +93,22 @@ void GameHandler::run()
         break;
       }
     }
+    // TODO: maybe replace with command class
+    if ((*cmd)->getName() == "play")
+      play();
   }
 }
+
+//------------------------------------------------------------------------------
+void GameHandler::play()
+{
+  int sell_factor = 100;
+  if (recipeSugar_ > 15)
+    sell_factor -= 50;
+  // TODO implement logic
+
+  sell_factor = std::max(sell_factor, -100);
+
+  // TODO: set income, expence, balance members
+}
+

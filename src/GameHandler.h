@@ -22,6 +22,9 @@
 #include "CommandBalance.h"
 #include "CommandRecipe.h"
 
+#include "EnvironmentalEngine.h"
+#include "EnvironmentalCondition.h"
+
 using std::string;
 using std::vector;
 
@@ -38,7 +41,7 @@ class GameHandler
     //--------------------------------------------------------------------------
     // Constructor
     //
-    GameHandler();
+    GameHandler(int price_lemonade, int price_lemon, int price_sugar);
 
     //--------------------------------------------------------------------------
     // Forwards a given output to View
@@ -51,9 +54,14 @@ class GameHandler
     void setView(std::unique_ptr<GameUI> view);
 
     //--------------------------------------------------------------------------
-    // Runs the game
+    // Runs the game loop
     //
     void run();
+
+    //--------------------------------------------------------------------------
+    // Executes one round of the game
+    //
+    void play();
 
   private:
     static const int BASE_SUGAR = 6;
@@ -64,11 +72,6 @@ class GameHandler
     //
     std::unique_ptr<GameUI> view_;
 
-    //--------------------------------------------------------------------------
-    // stringsplit into vecor of string
-    //
-    vector<string> split(const string& original, char separator);
-
     int recipeSugar_;
     int recipeLemon_;
     int recipeWater_;
@@ -77,7 +80,25 @@ class GameHandler
     int stockLemon_;
     int cache_;
 
+    int price_lemonade_;
+    int price_lemon_;
+    int price_sugar_;
+
+    int income_;
+    int expence_;
+    int balance_;
+
+    EnvironmentalEngine* wheather_engine;
+    EnvironmentalCondition* current_weather;
+    EnvironmentalCondition* next_weather;
+
+
     vector<std::unique_ptr<Command>> commands_;
+
+    //--------------------------------------------------------------------------
+    // stringsplit into vecor of string
+    //
+    vector<string> split(const string& original, char separator);
 
 };
 
