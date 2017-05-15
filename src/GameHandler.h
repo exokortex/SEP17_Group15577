@@ -63,6 +63,11 @@ class GameHandler
     //
     void play();
 
+    //--------------------------------------------------------------------------
+    // Setters
+    //
+    void setNextWeather(std::unique_ptr<EnvironmentalCondition> next_weather);
+
   private:
     static const int BASE_SUGAR = 6;
     static const int BASE_LEMON = 6;
@@ -88,9 +93,9 @@ class GameHandler
     int expence_;
     int balance_;
 
-    std::unique_ptr<EnvironmentalEngine> weather_engine;
-    std::unique_ptr<EnvironmentalCondition> current_weather;
-    std::unique_ptr<EnvironmentalCondition> next_weather;
+    std::unique_ptr<EnvironmentalEngine> weather_engine_;
+    std::unique_ptr<EnvironmentalCondition> current_weather_;
+    std::unique_ptr<EnvironmentalCondition> next_weather_;
 
     vector<std::unique_ptr<Command>> commands_;
 

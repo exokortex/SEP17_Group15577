@@ -32,9 +32,16 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   next_weather = weather_engine->createCondition();
 }
 
+//------------------------------------------------------------------------------
 void GameHandler::setView(std::unique_ptr<GameUI> view)
 {
   this->view_ = std::move(view);
+}
+
+
+void GameHandler::setNextWeather(std::unique_ptr<EnvironmentalCondition> next_weather)
+{
+  next_weather_ = std::move(next_weather);
 }
 
 //------------------------------------------------------------------------------
