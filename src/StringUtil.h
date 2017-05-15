@@ -18,6 +18,7 @@ class StringUtil final
 {
   public:
     static bool strictParseInt(std::string input, int* output);
+    static bool strictParseFloat(std::string input, float* output);
   private:
     virtual ~StringUtil();
 };

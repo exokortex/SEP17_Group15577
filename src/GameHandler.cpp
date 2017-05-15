@@ -16,6 +16,13 @@
 #include "GameUI.h"
 #include "Command.h"
 
+#include "CommandQuit.h"
+#include "CommandEcho.h"
+#include "CommandQuote.h"
+#include "CommandBalance.h"
+#include "CommandRecipe.h"
+#include "CommandSetweather.h"
+
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
     price_lemonade_(price_lemonade), price_lemon_(price_lemon),
@@ -26,10 +33,11 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandBalance()));
   commands_.push_back(std::unique_ptr<Command>(new CommandQuote()));
   commands_.push_back(std::unique_ptr<Command>(new CommandRecipe()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandSetweather()));
 
-  weather_engine = std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine());
-  current_weather = weather_engine->createCondition();
-  next_weather = weather_engine->createCondition();
+  weather_engine_ = std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine());
+  current_weather_ = weather_engine_->createCondition();
+  next_weather_ = weather_engine_->createCondition();
 }
 
 //------------------------------------------------------------------------------
@@ -118,7 +126,7 @@ void GameHandler::play()
 
   int sell_factor = 100; //%
 
-  if (current_weather->isItHot())
+  if (current_weather_->isItHot())
   {
     //hot weather
     if (recipe_sugar_ < BASE_SUGAR)
@@ -128,7 +136,7 @@ void GameHandler::play()
     if (recipe_lemon_ > BASE_LEMON)
       sell_factor += 20;
   }
-  else if (current_weather->isItCold())
+  else if (current_weather_->isItCold())
   {
     //cold weather
     if (recipe_sugar_ > BASE_SUGAR)

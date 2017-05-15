@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 //
 
-#ifndef COMMAND_RECIPE_H_INCLUDED
-#define COMMAND_RECIPE_H_INCLUDED
+#ifndef COMMAND_SETWEATHER_H_INCLUDED
+#define COMMAND_SETWEATHER_H_INCLUDED
 
 #include "Command.h"
 
@@ -63,4 +63,4 @@ class CommandSetweather : public Command
     virtual int execute(GameHandler& game, vector<string>& params);
 };
 
-#endif //COMMAND_RECIPE_H_INCLUDED
+#endif //COMMAND_SETWEATHER_H_INCLUDED

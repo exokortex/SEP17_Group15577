@@ -15,15 +15,11 @@
 #include <string>
 #include <algorithm>
 #include <memory>
-
-#include "CommandQuit.h"
-#include "CommandEcho.h"
-#include "CommandQuote.h"
-#include "CommandBalance.h"
-#include "CommandRecipe.h"
+#include <vector>
 
 #include "EnvironmentalEngine.h"
 #include "EnvironmentalCondition.h"
+#include "Command.h"
 
 using std::string;
 using std::vector;
