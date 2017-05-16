@@ -15,11 +15,11 @@
 #include "Command.h"
 
 class GameHandler;
+
 //------------------------------------------------------------------------------
 // class CommandQuote
 // the quote command
 //
-
 class CommandQuote : public Command
 {
   private:
@@ -37,6 +37,16 @@ class CommandQuote : public Command
     // usage string
     //
     static const string USAGE_STRING;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandQuote(const CommandQuote& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandQuote& operator=(const CommandQuote& original) = delete;
 
   public:
     //--------------------------------------------------------------------------

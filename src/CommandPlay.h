@@ -38,6 +38,16 @@ class CommandPlay : public Command
     //
     static const string USAGE_STRING;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandPlay(const CommandPlay& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandPlay& operator=(const CommandPlay& original) = delete;
+
   public:
     //--------------------------------------------------------------------------
     // Constructor
