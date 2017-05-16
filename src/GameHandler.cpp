@@ -171,13 +171,28 @@ void GameHandler::play()
   //consumption
 
   //take # of customers or cache, whichever is lower
-  int consumption = std::min(customers, stock_cash_);
+  int consumption = customers * sell_factor;
   //find next |4 value for consumption
   while (consumption % 4 != 0)
     consumption++;
 
-  //reduce cache
-  stock_cash_ -= consumption;
+  //Verbrauch
+  int needed_sugar;
+  int needed_lemon;
+  do
+  {
+    consumption -= 4;
+  } while((needed_sugar =
+      consumption * recipe_sugar_ / 100f)
+      > stock_sugar_);
+  do
+  {
+    consumption -= 4;
+  } while((needed_sugar =
+      consumption * recipe_lemon_ / 100f)
+      > stock_lemon_);
+  stock_sugar_-= needed_sugar;
+  stock_lemon_ -= needed_lemon;
 
   //calc new income, expence and balance members
   income_ = consumption * price_lemonade_;
