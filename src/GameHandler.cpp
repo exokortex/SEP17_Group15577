@@ -170,13 +170,13 @@ void GameHandler::play()
 
   //consumption
 
-  //take # of customers or cache, whichever is lower
+  //take # of customers mupltiplied by sell_factor
   int consumption = customers * sell_factor;
   //find next |4 value for consumption
   while (consumption % 4 != 0)
     consumption++;
 
-  //Verbrauch
+  //consumption
   int needed_sugar;
   int needed_lemon;
   while((needed_sugar =
