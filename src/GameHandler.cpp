@@ -173,8 +173,9 @@ void GameHandler::play()
   //consumption
 
   //take # of customers mupltiplied by sell_factor
-  int consumption = ceil(customers * sell_factor / 100.);
+  int sells = ceil(customers * sell_factor / 100.);
   //find next |4 value for consumption
+  int consumption = sells;
   while (consumption % 4 != 0)
     consumption++;
 
@@ -190,8 +191,10 @@ void GameHandler::play()
     consumption -= 4;
   }
 
+  sells = std::min(sells, consumption);
+
   //calc new income and balance
-  income_ = consumption * price_lemonade_;
+  income_ = sells * price_lemonade_;
   balance_ = income_ - expence_;
 
   // update the stock
