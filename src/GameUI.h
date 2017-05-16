@@ -64,7 +64,14 @@ class GameUI
     //
     static const string CMD_PROMPT;
 
+    //--------------------------------------------------------------------------
+    // HTML Writer for balance
+    //
     std::unique_ptr<HTMLWriterBalance> writer_balance_;
+
+    //--------------------------------------------------------------------------
+    // HTML Writer for environment
+    //
     std::unique_ptr<HTMLWriterEnvironment> writer_environment_;
 
     //--------------------------------------------------------------------------

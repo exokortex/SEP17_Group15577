@@ -58,8 +58,14 @@ class GameHandler
     //
     void play();
 
+    //--------------------------------------------------------------------------
+    // Update the balance html file
+    //
     void viewUpdateBalance();
 
+    //--------------------------------------------------------------------------
+    // Update the environment htm lfile
+    //
     void viewUpdateEnvironment();
 
     //--------------------------------------------------------------------------
@@ -188,33 +194,99 @@ class GameHandler
     }
 
   private:
+    //--------------------------------------------------------------------------
+    // The base lemonade sugar
+    //
     static const int BASE_SUGAR = 6;
+
+    //--------------------------------------------------------------------------
+    // The base lemonade lemon
+    //
     static const int BASE_LEMON = 6;
+
+    //--------------------------------------------------------------------------
+    // The base lemonade water
+    //
     static const int BASE_WATER = 88;
+
     //--------------------------------------------------------------------------
     // The hold instance of the games View
     //
     std::unique_ptr<GameUI> view_;
 
+    //--------------------------------------------------------------------------
+    // The recipe lemon
+    //
     int recipe_lemon_ = BASE_LEMON;
+
+    //--------------------------------------------------------------------------
+    // The recipe sugar
+    //
     int recipe_sugar_ = BASE_SUGAR;
+
+    //--------------------------------------------------------------------------
+    // The recipe water
+    //
     int recipe_water_ = BASE_WATER;
 
-    int stock_sugar_ = 100;
-    int stock_lemon_ = 100;
-    int stock_cash_ = 5000;
+    //--------------------------------------------------------------------------
+    // The stock sugar
+    //
+    int stock_sugar_;
 
+    //--------------------------------------------------------------------------
+    // The stock lemon
+    //
+    int stock_lemon_;
+
+    //--------------------------------------------------------------------------
+    // The current cash
+    //
+    int stock_cash_;
+
+    //--------------------------------------------------------------------------
+    // The income
+    //
+    int income_;
+
+    //--------------------------------------------------------------------------
+    // The expence
+    //
+    int expence_;
+
+    //--------------------------------------------------------------------------
+    // The balance of the last round
+    //
+    int balance_;
+
+    //--------------------------------------------------------------------------
+    // Price of one lemonade
+    //
     int price_lemonade_;
+
+    //--------------------------------------------------------------------------
+    // The of one unit of lemon
+    //
     int price_lemon_;
+
+    //--------------------------------------------------------------------------
+    // Price of one unit of sugar
+    //
     int price_sugar_;
 
-    int income_ = 0;
-    int expence_ = 0;
-    int balance_ = 0;
-
+    //--------------------------------------------------------------------------
+    // The weather engine
+    //
     std::unique_ptr<EnvironmentalEngine> weather_engine_;
+
+    //--------------------------------------------------------------------------
+    // The next weather
+    //
     std::unique_ptr<EnvironmentalCondition> next_weather_;
 
+    //--------------------------------------------------------------------------
+    // The vector of valid commands
+    //
     vector<std::unique_ptr<Command>> commands_;
 
     //--------------------------------------------------------------------------

@@ -23,6 +23,7 @@ const string CommandBuy::ERROR_WRONG_PARAM = "[ERR] Wrong parameter.\n";
 const string CommandBuy::ERROR_NOT_ENOUGH_MONEY =
     "[WARN] Not enough money. I buy what I can.\n";
 
+//------------------------------------------------------------------------------
 CommandBuy::CommandBuy() :
     Command(NAME)
 {

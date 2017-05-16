@@ -22,9 +22,3 @@ Command::Command(string name)
 Command::~Command()
 {
 }
-
-//------------------------------------------------------------------------------
-const string& Command::getName() const
-{
-  return command_name_;
-}

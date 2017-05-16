@@ -73,7 +73,10 @@ class Command
     //--------------------------------------------------------------------------
     // Getter Methods
     //
-    const string& getName() const;
+    inline const string& getName() const
+    {
+      return command_name_;
+    }
 };
 
 #endif //COMMAND_H_INCLUDED

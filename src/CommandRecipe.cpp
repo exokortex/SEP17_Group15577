@@ -27,6 +27,7 @@ const string CommandRecipe::ERROR_LEMON =
 const string CommandRecipe::ERROR_SUGAR =
     "[ERR] The value of Sugar must be a multiple of 2.\n";
 
+//------------------------------------------------------------------------------
 CommandRecipe::CommandRecipe() :
     Command(NAME)
 {

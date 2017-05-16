@@ -20,6 +20,7 @@ const string CommandQuote::NAME = "quote";
 const string CommandQuote::USAGE_STRING =
     "[ERR] Usage: quote\n";
 
+//------------------------------------------------------------------------------
 CommandQuote::CommandQuote() :
     Command(NAME)
 {

@@ -21,6 +21,7 @@ const string CommandSetweather::USAGE_STRING =
     "[ERR] Usage: setweather <cover> <precipitation> <temperature> <wind>\n";
 const string CommandSetweather::ERROR_WRONG_PARAM = "[ERR] Wrong parameter.\n";
 
+//------------------------------------------------------------------------------
 CommandSetweather::CommandSetweather() :
     Command(NAME)
 {
