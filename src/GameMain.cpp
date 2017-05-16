@@ -16,6 +16,7 @@
 #include "GameUI.h"
 #include "StringUtil.h"
 
+//------------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
   try
@@ -29,9 +30,8 @@ int main(int argc, char *argv[])
         || !StringUtil::strictParseInt(argv[2], &price_lemon)
         || !StringUtil::strictParseInt(argv[3], &price_sugar))
     {
-      std::cout
-          << "[ERR] Wrong usage: ./basic <price_lemonade> <price_lemon> <price_sugar>"
-          << std::endl;
+      std::cout << "[ERR] Wrong usage: ./basic <price_lemonade>"
+          " <price_lemon> <price_sugar>\n";
       return 2;
     }
 
@@ -49,10 +49,9 @@ int main(int argc, char *argv[])
     handler->run();
 
     return 0;
-  }
-  catch (std::bad_alloc& e)
+  } catch (std::bad_alloc& e)
   {
-    std::cout << "[ERR] Out of memory." << std::endl;
+    std::cout << "[ERR] Out of memory.\n";
     return 1;
   }
 }

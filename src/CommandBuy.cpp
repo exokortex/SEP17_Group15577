@@ -54,7 +54,7 @@ int CommandBuy::execute(GameHandler& game, vector<string>& params)
   // reduce amount until price is payable
   // TODO: fix problem with buying multiple times in the same round
   while ((total_cost = lemon * game.getPriceLemon()
-      + sugar * game.getPriceSugar() + game.getExpence()) > game.getStockCash())
+      + sugar * game.getPriceSugar() + game.getNextExpence()) > game.getStockCash())
   {
     if (reduce_lemon)
       lemon = std::max(0, lemon - 1);
@@ -67,7 +67,7 @@ int CommandBuy::execute(GameHandler& game, vector<string>& params)
   if (reduction_necessary)
     game.output(ERROR_NOT_ENOUGH_MONEY);
 
-  game.setExpence(total_cost);
+  game.setNextExpence(total_cost);
   game.setStockLemon(game.getStockLemon() + lemon);
   game.setStockSugar(game.getStockSugar() + sugar);
 
