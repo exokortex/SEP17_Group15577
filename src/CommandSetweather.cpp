@@ -19,7 +19,7 @@
 const string CommandSetweather::NAME = "setweather";
 const string CommandSetweather::USAGE_STRING =
     "[ERR] Usage: setweather <cover> <precipitation> <temperature> <wind>\n";
-const string CommandSetweather::ERROR_PARAM = "[ERR] Wrong parameter.\n";
+const string CommandSetweather::ERROR_WRONG_PARAM = "[ERR] Wrong parameter.\n";
 
 CommandSetweather::CommandSetweather() :
     Command(NAME)
@@ -52,7 +52,7 @@ int CommandSetweather::execute(GameHandler& game, vector<string>& params)
       || !StringUtil::strictParseInt(params[3], &wind_int) || wind_int < 0
       || wind_int >= EnvironmentalCondition::COVER_SIZE)
   {
-    game.output(USAGE_STRING);
+    game.output(ERROR_WRONG_PARAM);
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
 

@@ -10,11 +10,13 @@
 //
 
 #include <stdlib.h>
+#include <algorithm>
 #include <memory>
 
 #include "GameHandler.h"
 #include "GameUI.h"
 #include "Command.h"
+#include "StringUtil.h"
 
 #include "CommandQuit.h"
 #include "CommandEcho.h"
@@ -64,27 +66,6 @@ void GameHandler::output(string output)
 }
 
 //------------------------------------------------------------------------------
-vector<string> GameHandler::split(const string& original, char separator)
-{
-  std::vector<std::string> results;
-  std::string::const_iterator start = original.begin();
-  std::string::const_iterator end = original.end();
-  std::string::const_iterator next = std::find(start, end, separator);
-  while (next != end)
-  {
-    // ignore empty parts
-    if (start != next)
-      results.push_back(std::string(start, next));
-    start = next + 1;
-    next = std::find(start, end, separator);
-  }
-  // ignore empty parts
-  if (start != next)
-    results.push_back(std::string(start, next));
-  return results;
-}
-
-//------------------------------------------------------------------------------
 void GameHandler::run()
 {
   string input_line;
@@ -97,7 +78,7 @@ void GameHandler::run()
     input_line = view_->nextUserCommand();
 
     //process input_line
-    vector<string> params = split(input_line, ' ');
+    vector<string> params = StringUtil::split(input_line, ' ');
 
     // ignore empty lines
     if (params.size() == 0)

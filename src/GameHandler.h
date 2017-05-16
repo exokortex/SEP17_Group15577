@@ -13,7 +13,6 @@
 #define GAMEHANDLER_H_INCLUDED
 
 #include <string>
-#include <algorithm>
 #include <memory>
 #include <vector>
 
@@ -218,11 +217,6 @@ class GameHandler
     std::unique_ptr<EnvironmentalCondition> next_weather_;
 
     vector<std::unique_ptr<Command>> commands_;
-
-    //--------------------------------------------------------------------------
-    // stringsplit into vecor of string
-    //
-    vector<string> split(const string& original, char separator);
 
 };
 

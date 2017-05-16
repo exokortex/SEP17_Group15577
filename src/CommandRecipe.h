@@ -46,6 +46,11 @@ class CommandRecipe : public Command
     static const string USAGE_STRING;
 
     //--------------------------------------------------------------------------
+    // error string for wrong parameters
+    //
+    static const string ERROR_WRONG_PARAM;
+
+    //--------------------------------------------------------------------------
     // error string for wrong sum
     //
     static const string ERROR_SUM;

@@ -39,6 +39,7 @@ int CommandBalance::execute(GameHandler& game, vector<string>& params)
     out << "S: " << game.getStockSugar() << "\n";
     out << "----------\n";
     out << "C: " << game.getStockCash() << " $\n";
+    out << "B: " << game.getBalance() << " $\n";
   }
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;

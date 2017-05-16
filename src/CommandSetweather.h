@@ -35,9 +35,9 @@ class CommandSetweather : public Command
     static const string USAGE_STRING;
 
     //--------------------------------------------------------------------------
-    // error string for wrong params
+    // error string for wrong parameters
     //
-    static const string ERROR_PARAM;
+    static const string ERROR_WRONG_PARAM;
 
     //--------------------------------------------------------------------------
     // the sum of all arguments

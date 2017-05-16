@@ -20,6 +20,7 @@
 const string CommandRecipe::NAME = "recipe";
 const string CommandRecipe::USAGE_STRING =
     "[ERR] Usage: recipe [lemon] [sugar] [water]\n";
+const string CommandRecipe::ERROR_WRONG_PARAM = "[ERR] Wrong parameter.\n";
 const string CommandRecipe::ERROR_SUM = "[ERR] The sum of parts must be 100.\n";
 const string CommandRecipe::ERROR_LEMON =
     "[ERR] The value of Lemon must be a multiple of 3.\n";
@@ -50,7 +51,7 @@ int CommandRecipe::execute(GameHandler& game, vector<string>& params)
         || !StringUtil::strictParseInt(params[1], &sugar) || sugar < 0
         || !StringUtil::strictParseInt(params[2], &water) || water < 0)
     {
-      game.output(USAGE_STRING);
+      game.output(ERROR_WRONG_PARAM);
       return Command::EXECUTION_RESULT_NO_SUCCESS;
     }
     if (lemon + sugar + water != EXPECTED_SUM)

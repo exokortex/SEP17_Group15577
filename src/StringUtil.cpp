@@ -11,6 +11,8 @@
 
 #include "StringUtil.h"
 
+#include <algorithm>
+
 //------------------------------------------------------------------------------
 bool StringUtil::strictParseInt(std::string input, int* output)
 {
@@ -41,4 +43,25 @@ bool StringUtil::strictParseFloat(std::string input, float* output)
   {
     return false;
   }
+}
+
+//------------------------------------------------------------------------------
+vector<string> StringUtil::split(const std::string& original, char separator)
+{
+  std::vector<std::string> results;
+  std::string::const_iterator start = original.begin();
+  std::string::const_iterator end = original.end();
+  std::string::const_iterator next = std::find(start, end, separator);
+  while (next != end)
+  {
+    // ignore empty parts
+    if (start != next)
+      results.push_back(std::string(start, next));
+    start = next + 1;
+    next = std::find(start, end, separator);
+  }
+  // ignore empty parts
+  if (start != next)
+    results.push_back(std::string(start, next));
+  return results;
 }
