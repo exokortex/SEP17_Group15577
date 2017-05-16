@@ -196,7 +196,7 @@ void GameHandler::play()
 
   //calc new income, expence and balance members
   income_ = consumption * price_lemonade_;
-  expence_ = 0; //TODO!!!!!
+  expence_ = next_expence_;
   balance_ = income_ - expence_;
 
   viewUpdateBalance();
