@@ -181,13 +181,13 @@ void GameHandler::play()
   int needed_lemon;
   while((needed_sugar =
         consumption * recipe_sugar_ / 100.)
-        > stock_sugar_);
+        > stock_sugar_)
   {
     consumption -= 4;
   }
   while((needed_lemon =
         consumption * recipe_lemon_ / 100.)
-        > stock_lemon_);
+        > stock_lemon_)
   {
     consumption -= 4;
   }
