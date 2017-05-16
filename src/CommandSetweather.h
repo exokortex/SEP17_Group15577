@@ -48,6 +48,16 @@ class CommandSetweather : public Command
     //
     static const int EXPECTED_SUM = 100;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandSetweather(const CommandSetweather& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandSetweather& operator=(const CommandSetweather& original) = delete;
+
   public:
     //--------------------------------------------------------------------------
     // Constructor
