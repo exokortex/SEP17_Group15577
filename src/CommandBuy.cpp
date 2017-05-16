@@ -54,9 +54,9 @@ int CommandBuy::execute(GameHandler& game, vector<string>& params)
   while ((total_cost = lemon * game.getPriceLemon()
       + sugar * game.getPriceSugar() + game.getExpence()) > game.getStockCash())
   {
-      lemon = std::max(0, lemon - 1);
-      sugar = std::max(0, sugar - 1);
-      reduction_necessary = true;
+    lemon = std::max(0, lemon - 1);
+    sugar = std::max(0, sugar - 1);
+    reduction_necessary = true;
   }
 
   if (reduction_necessary)

@@ -38,6 +38,16 @@ class CommandEcho : public Command
     //
     static const string TERMINAL_STRING;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandEcho(const CommandEcho& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandEcho& operator=(const CommandEcho& original) = delete;
+
   public:
     //--------------------------------------------------------------------------
     // Constructor

@@ -19,7 +19,7 @@
 // class HTMLWriterEnvironment
 // HTMLWriter for the current EnvironmentalCondition
 //
-class HTMLWriterEnvironment : HTMLWriter
+class HTMLWriterEnvironment: HTMLWriter
 {
   public:
     //--------------------------------------------------------------------------
@@ -35,6 +35,17 @@ class HTMLWriterEnvironment : HTMLWriter
     //        represented in the file
     //
     void writeFile(EnvironmentalCondition ec);
+
+  private:
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    HTMLWriterEnvironment(const HTMLWriterEnvironment& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    HTMLWriterEnvironment& operator=(const HTMLWriterEnvironment& original) = delete;
 };
 
 #endif /* HTMLWRITERENVIRONMENT_H_INCLUDED */

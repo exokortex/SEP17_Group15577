@@ -64,6 +64,16 @@ class GameUI
 
     std::unique_ptr<HTMLWriterBalance> writer_balance_;
     std::unique_ptr<HTMLWriterEnvironment> writer_environment_;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    GameUI(const GameUI& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    GameUI& operator=(const GameUI& original) = delete;
 };
 
 #endif /* GAMEUI_H_INCLUDED */

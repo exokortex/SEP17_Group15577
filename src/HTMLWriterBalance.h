@@ -36,6 +36,17 @@ class HTMLWriterBalance : HTMLWriter
     // @param delta the delta
     //
     void writeFile(int lemon, int sugar, int cash, int delta);
+
+  private:
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    HTMLWriterBalance(const HTMLWriterBalance& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    HTMLWriterBalance& operator=(const HTMLWriterBalance& original) = delete;
 };
 
 #endif /* HTMLWRITERBALANCE_H_INCLUDED */

@@ -44,6 +44,16 @@ class StringUtil final
 
   private:
     //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    StringUtil(const StringUtil& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    StringUtil& operator=(const StringUtil& original) = delete;
+
+    //--------------------------------------------------------------------------
     // Private Destructor (allow no objects)
     //
     virtual ~StringUtil() = delete;

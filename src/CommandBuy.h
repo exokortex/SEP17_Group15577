@@ -53,6 +53,16 @@ class CommandBuy : public Command
     //
     static const int EXPECTED_SUM = 100;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandBuy(const CommandBuy& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandBuy& operator=(const CommandBuy& original) = delete;
+
   public:
     //--------------------------------------------------------------------------
     // Constructor

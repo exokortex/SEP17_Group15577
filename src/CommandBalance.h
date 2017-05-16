@@ -41,7 +41,7 @@ class CommandBalance : public Command
     //--------------------------------------------------------------------------
     // Private copy constructor
     //
-    CommandBalance(const Command& original) = delete;
+    CommandBalance(const CommandBalance& original) = delete;
 
     //--------------------------------------------------------------------------
     // Private assignment operator

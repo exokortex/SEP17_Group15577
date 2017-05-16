@@ -189,6 +189,16 @@ class EnvironmentalCondition
     // The strength of the wind
     //
     Rank wind_;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    EnvironmentalCondition(const EnvironmentalCondition& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    EnvironmentalCondition& operator=(const EnvironmentalCondition& original) = delete;
 };
 
 #endif /* ENVIRONMENTALCONDITION_H_INCLUDED */

@@ -74,6 +74,16 @@ class CommandRecipe : public Command
     //
     static const int EXPECTED_SUM = 100;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandRecipe(const CommandRecipe& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandRecipe& operator=(const CommandRecipe& original) = delete;
+
   public:
     //--------------------------------------------------------------------------
     // Constructor

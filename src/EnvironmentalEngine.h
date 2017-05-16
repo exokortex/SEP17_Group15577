@@ -40,6 +40,17 @@ class EnvironmentalEngine
     // Creates a new random Environmental condition.
     //
     std::unique_ptr<EnvironmentalCondition> createCondition();
+
+  private:
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    EnvironmentalEngine(const EnvironmentalEngine& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    EnvironmentalEngine& operator=(const EnvironmentalEngine& original) = delete;
 };
 
 #endif /* ENVIRONMENTALENGINE_H_INCLUDED */

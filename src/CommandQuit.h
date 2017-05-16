@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandQuit
+// the quit command
+//
 class CommandQuit : public Command
 {
   private:
@@ -38,6 +42,16 @@ class CommandQuit : public Command
     // the quit message
     //
     static const string MESSAGE;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandQuit(const CommandQuit& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandQuit& operator=(const CommandQuit& original) = delete;
 
   public:
     //--------------------------------------------------------------------------

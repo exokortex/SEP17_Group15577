@@ -180,19 +180,15 @@ void GameHandler::play()
   //consumption
   int needed_sugar;
   int needed_lemon;
-  while((needed_sugar =
-        ceil(consumption * recipe_sugar_ / 2.))
-        > stock_sugar_)
+  while ((needed_sugar = consumption * recipe_sugar_ / 2) > stock_sugar_)
   {
     consumption -= 4;
   }
-  while((needed_lemon =
-        ceil(consumption * recipe_lemon_ / 3.))
-        > stock_lemon_)
+  while ((needed_lemon = consumption * recipe_lemon_ / 3) > stock_lemon_)
   {
     consumption -= 4;
   }
-  stock_sugar_-= needed_sugar;
+  stock_sugar_ -= needed_sugar;
   stock_lemon_ -= needed_lemon;
 
   //calc new income, expence and balance members

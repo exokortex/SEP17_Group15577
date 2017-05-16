@@ -218,6 +218,15 @@ class GameHandler
 
     vector<std::unique_ptr<Command>> commands_;
 
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    GameHandler(const GameHandler& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    GameHandler& operator=(const GameHandler& original) = delete;
 };
 
 #endif /* GAMEHANDLER_H_INCLUDED */

@@ -41,6 +41,16 @@ class HTMLWriter
     // the default filename
     //
     string filename_;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    HTMLWriter(const HTMLWriter& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    HTMLWriter& operator=(const HTMLWriter& original) = delete;
 };
 
 #endif /* HTMLWRITER_H_INCLUDED */
