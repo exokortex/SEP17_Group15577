@@ -50,19 +50,14 @@ void GameUI::ouputEnvironment(EnvironmentalCondition& ec)
 }
 
 //------------------------------------------------------------------------------
-string GameUI::nextUserCommand()
+bool GameUI::nextUserCommand(string& command)
 {
   string input_line;
 
-  //print prompt
+  // print prompt
   cout << CMD_PROMPT;
 
-  // TODO: propagate exception when reading fails to the GameHandler
-  //wait for and read command line
-  if (!std::getline(cin, input_line))
-  {
-    // exit if reading went wrong (i.e. EOF)
-    return "quit";
-  }
-  return input_line;
+  // wait for and read command line
+  // (yes we really have to manually convert the return to bool)
+  return std::getline(cin, command) ? true : false;
 }

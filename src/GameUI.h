@@ -53,8 +53,10 @@ class GameUI
 
     //--------------------------------------------------------------------------
     // Reads a new command
+    // @param command the command to be read to
+    // @return if successful
     //
-    string nextUserCommand();
+    bool nextUserCommand(string& command);
 
   private:
     //--------------------------------------------------------------------------

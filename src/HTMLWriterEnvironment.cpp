@@ -21,7 +21,7 @@ HTMLWriterEnvironment::HTMLWriterEnvironment(string filename) :
 }
 
 //------------------------------------------------------------------------------
-void HTMLWriterEnvironment::writeFile(EnvironmentalCondition ec)
+void HTMLWriterEnvironment::writeFile(EnvironmentalCondition& ec)
 {
   std::stringstream body;
 

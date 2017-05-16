@@ -213,7 +213,6 @@ class GameHandler
     int balance_ = 0;
 
     std::unique_ptr<EnvironmentalEngine> weather_engine_;
-    std::unique_ptr<EnvironmentalCondition> current_weather_;
     std::unique_ptr<EnvironmentalCondition> next_weather_;
 
     vector<std::unique_ptr<Command>> commands_;

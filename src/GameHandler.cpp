@@ -44,7 +44,6 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
 
   weather_engine_ = std::unique_ptr<EnvironmentalEngine>(
       new EnvironmentalEngine());
-  current_weather_ = weather_engine_->createCondition();
   next_weather_ = weather_engine_->createCondition();
 }
 
@@ -76,7 +75,9 @@ void GameHandler::run()
   //command loop
   while (true)
   {
-    input_line = view_->nextUserCommand();
+    // if reading failed, exit
+    if (!view_->nextUserCommand(input_line))
+      return;
 
     //process input_line
     vector<string> params = StringUtil::split(input_line, ' ');
@@ -116,13 +117,13 @@ void GameHandler::run()
 //------------------------------------------------------------------------------
 void GameHandler::play()
 {
-  //limonade
+  // limonade
 
-  int sell_factor = 100; //%
+  int sell_factor = 100; // in percent
 
   if (next_weather_->isItHot())
   {
-    //hot weather
+    // hot weather
     if (recipe_sugar_ < BASE_SUGAR)
       sell_factor += 20;
     else if (recipe_sugar_ > BASE_SUGAR)
@@ -132,7 +133,7 @@ void GameHandler::play()
   }
   else if (next_weather_->isItCold())
   {
-    //cold weather
+    // cold weather
     if (recipe_sugar_ > BASE_SUGAR)
       sell_factor += 20;
     else if (recipe_sugar_ < BASE_SUGAR)
@@ -140,7 +141,7 @@ void GameHandler::play()
     if (recipe_lemon_ > BASE_LEMON)
       sell_factor -= 20;
   }
-  //general factors
+  // general factors
   if (recipe_sugar_ > 20)
     sell_factor -= 100;
   else if (recipe_sugar_ > 15)
@@ -162,17 +163,17 @@ void GameHandler::play()
 
   if (next_weather_->isItHot())
     customers = round(customers * 1.5);
-  else if (current_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
+  else if (next_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
     customers = round(customers * 0.8);
-  else if (current_weather_->isItRainy())
+  else if (next_weather_->isItRainy())
     customers = round(customers * 0.5);
-  else if (current_weather_->isItStormy())
+  else if (next_weather_->isItStormy())
     customers = round(customers * 0.1);
 
   //consumption
 
   //take # of customers mupltiplied by sell_factor
-  int consumption = ceil(customers * sell_factor / 100);
+  int consumption = ceil(customers * sell_factor / 100.);
   //find next |4 value for consumption
   while (consumption % 4 != 0)
     consumption++;
@@ -188,17 +189,21 @@ void GameHandler::play()
   {
     consumption -= 4;
   }
-  stock_sugar_ -= needed_sugar;
-  stock_lemon_ -= needed_lemon;
 
-  //calc new income, expence and balance members
+  //calc new income and balance
   income_ = consumption * price_lemonade_;
   balance_ = income_ - expence_;
 
-  stock_cash_ += balance_;
+  // update the stock
+  stock_cash_ += income_;
+  stock_sugar_ -= needed_sugar;
+  stock_lemon_ -= needed_lemon;
 
+  // update the html files
   viewUpdateBalance();
   viewUpdateEnvironment();
+
+  // generate weather for next round
   next_weather_ = weather_engine_->createCondition();
 
   // reset expence for next round of buying

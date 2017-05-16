@@ -34,7 +34,7 @@ class HTMLWriterEnvironment: HTMLWriter
     // @param EnvironmentalCondition the EnvironmentalCondition to be
     //        represented in the file
     //
-    void writeFile(EnvironmentalCondition ec);
+    void writeFile(EnvironmentalCondition& ec);
 
   private:
     //--------------------------------------------------------------------------
