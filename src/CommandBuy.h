@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandBuy
+// the buy command
+//
 class CommandBuy : public Command
 {
   private:

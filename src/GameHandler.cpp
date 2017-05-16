@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <memory>
+#include <cmath>
 
 #include "GameHandler.h"
 #include "GameUI.h"
@@ -119,7 +120,7 @@ void GameHandler::play()
 
   int sell_factor = 100; //%
 
-  if (current_weather_->isItHot())
+  if (next_weather_->isItHot())
   {
     //hot weather
     if (recipe_sugar_ < BASE_SUGAR)
@@ -129,7 +130,7 @@ void GameHandler::play()
     if (recipe_lemon_ > BASE_LEMON)
       sell_factor += 20;
   }
-  else if (current_weather_->isItCold())
+  else if (next_weather_->isItCold())
   {
     //cold weather
     if (recipe_sugar_ > BASE_SUGAR)
@@ -153,25 +154,25 @@ void GameHandler::play()
   else if (recipe_water_ > 95)
     sell_factor -= 50;
 
-  sell_factor = std::max(sell_factor, -100);
+  sell_factor = std::max(sell_factor, 0);
 
   //customers
 
   int customers = 500;
 
-  if (current_weather_->isItHot())
-    customers *= 1.5;
+  if (next_weather_->isItHot())
+    customers = round(customers * 1.5);
   else if (current_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
-    customers *= 0.8;
-  else if (current_weather_->isItStormy())
-    customers *= 0.1;
+    customers = round(customers * 0.8);
   else if (current_weather_->isItRainy())
-    customers *= 0.5;
+    customers = round(customers * 0.5);
+  else if (current_weather_->isItStormy())
+    customers = round(customers * 0.1);
 
   //consumption
 
   //take # of customers mupltiplied by sell_factor
-  int consumption = customers * sell_factor;
+  int consumption = ceil(customers * sell_factor / 100);
   //find next |4 value for consumption
   while (consumption % 4 != 0)
     consumption++;
@@ -180,13 +181,13 @@ void GameHandler::play()
   int needed_sugar;
   int needed_lemon;
   while((needed_sugar =
-        consumption * recipe_sugar_ / 100.)
+        ceil(consumption * recipe_sugar_ / 2.))
         > stock_sugar_)
   {
     consumption -= 4;
   }
   while((needed_lemon =
-        consumption * recipe_lemon_ / 100.)
+        ceil(consumption * recipe_lemon_ / 3.))
         > stock_lemon_)
   {
     consumption -= 4;
@@ -196,12 +197,16 @@ void GameHandler::play()
 
   //calc new income, expence and balance members
   income_ = consumption * price_lemonade_;
-  expence_ = next_expence_;
   balance_ = income_ - expence_;
+
+  stock_cash_ += balance_;
 
   viewUpdateBalance();
   viewUpdateEnvironment();
   next_weather_ = weather_engine_->createCondition();
+
+  // reset expence for next round of buying
+  expence_ = 0;
 }
 
 void GameHandler::viewUpdateBalance()

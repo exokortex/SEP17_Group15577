@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandSetweather
+// the setweather command
+//
 class CommandSetweather : public Command
 {
   private:

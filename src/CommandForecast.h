@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandForecast
+// the forecast command
+//
 class CommandForecast : public Command
 {
   private:

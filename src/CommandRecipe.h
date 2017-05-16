@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandRecipe
+// the recipe command
+//
 class CommandRecipe : public Command
 {
   private:

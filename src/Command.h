@@ -21,18 +21,22 @@ using std::vector;
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class Command
+// abstract base class for all commands
+//
 class Command
 {
   private:
     //--------------------------------------------------------------------------
     // Private copy constructor
     //
-    Command(const Command& original);
+    Command(const Command& original) = delete;
 
     //--------------------------------------------------------------------------
     // Private assignment operator
     //
-    Command& operator=(const Command& original);
+    Command& operator=(const Command& original) = delete;
 
     //--------------------------------------------------------------------------
     // Name of this command

@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandBalance
+// the balance command
+//
 class CommandBalance : public Command
 {
   private:
@@ -33,6 +37,16 @@ class CommandBalance : public Command
     // usage string
     //
     static const string USAGE_STRING;
+
+    //--------------------------------------------------------------------------
+    // Private copy constructor
+    //
+    CommandBalance(const Command& original) = delete;
+
+    //--------------------------------------------------------------------------
+    // Private assignment operator
+    //
+    CommandBalance& operator=(const CommandBalance& original) = delete;
 
   public:
     //--------------------------------------------------------------------------

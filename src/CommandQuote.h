@@ -15,6 +15,10 @@
 #include "Command.h"
 
 class GameHandler;
+//------------------------------------------------------------------------------
+// class CommandQuote
+// the quote command
+//
 
 class CommandQuote : public Command
 {

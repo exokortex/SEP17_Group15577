@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandEcho
+// the echo command
+//
 class CommandEcho : public Command
 {
   private:

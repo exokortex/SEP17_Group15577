@@ -187,16 +187,6 @@ class GameHandler
       stock_sugar_ = stockSugar;
     }
 
-    int getNextExpence() const
-    {
-      return next_expence_;
-    }
-
-    void setNextExpence(int nextExpence = 0)
-    {
-      next_expence_ = nextExpence;
-    }
-
   private:
     static const int BASE_SUGAR = 6;
     static const int BASE_LEMON = 6;
@@ -221,8 +211,6 @@ class GameHandler
     int income_ = 0;
     int expence_ = 0;
     int balance_ = 0;
-
-    int next_expence_ = 0;
 
     std::unique_ptr<EnvironmentalEngine> weather_engine_;
     std::unique_ptr<EnvironmentalCondition> current_weather_;

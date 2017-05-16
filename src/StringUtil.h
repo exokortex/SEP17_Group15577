@@ -18,18 +18,35 @@
 using std::vector;
 using std::string;
 
+//------------------------------------------------------------------------------
+// class StringUtil
+// Provides static string manipulation functions
+//
 class StringUtil final
 {
   public:
+    //--------------------------------------------------------------------------
+    // parse a string to int
+    // @return if the parsing was successful
+    //
     static bool strictParseInt(std::string input, int* output);
+
+    //--------------------------------------------------------------------------
+    // parse a string to float
+    // @return if the parsing was successful
+    //
     static bool strictParseFloat(std::string input, float* output);
 
     //--------------------------------------------------------------------------
     // stringsplit into vecor of string
     //
     static vector<string> split(const string& original, char separator);
+
   private:
-    virtual ~StringUtil();
+    //--------------------------------------------------------------------------
+    // Private Destructor (allow no objects)
+    //
+    virtual ~StringUtil() = delete;
 };
 
 #endif /* STRINGUTIL_H_INCLUDED */

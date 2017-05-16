@@ -16,6 +16,10 @@
 
 class GameHandler;
 
+//------------------------------------------------------------------------------
+// class CommandPlay
+// the play command
+//
 class CommandPlay : public Command
 {
   private:
