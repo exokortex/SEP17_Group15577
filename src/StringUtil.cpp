@@ -32,6 +32,12 @@ bool StringUtil::strictParseInt(std::string input, int* output)
 //------------------------------------------------------------------------------
 bool StringUtil::strictParseFloat(std::string input, float* output)
 {
+  for (unsigned int i = 0; i < input.length(); i++)
+  {
+    // if any of the charaters is not a digit or dot, return
+    if ((input[i] < '0' || input[i] > '9') && input[i] != '.')
+      return false;
+  }
   try
   {
     size_t pos;
