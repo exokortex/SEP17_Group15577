@@ -39,20 +39,18 @@ int CommandForecast::execute(GameHandler& game, vector<string>& params)
   std::unique_ptr<EnvironmentalCondition> maxima =
       EnvironmentalEngine::getConditionMax(game.getNextWeather());
   std::ostringstream out;
-  {
-    out << "Next game weekend, the temperature will be between ";
-    out << minima->getTemperature() << " and " << maxima->getTemperature();
-    out << "°C." << std::endl;
-    out << "The precipitation will be between ";
-    out << minima->getPrecipitationString() << " and ";
-    out << maxima->getPrecipitationString() << std::endl;
-    out << "Sky coverage will be between ";
-    out << minima->getSkyCoverString() << " and ";
-    out << maxima->getSkyCoverString() << std::endl;
-    out << "We expect wind to be from ";
-    out << minima->getWindString() << " to ";
-    out << maxima->getWindString() << std::endl;
-  }
+  out << "Next game weekend, the temperature will be between ";
+  out << minima->getTemperature() << " and " << maxima->getTemperature();
+  out << "°C." << std::endl;
+  out << "The precipitation will be between ";
+  out << minima->getPrecipitationString() << " and ";
+  out << maxima->getPrecipitationString() << std::endl;
+  out << "Sky coverage will be between ";
+  out << minima->getSkyCoverString() << " and ";
+  out << maxima->getSkyCoverString() << std::endl;
+  out << "We expect wind to be from ";
+  out << minima->getWindString() << " to ";
+  out << maxima->getWindString() << std::endl;
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;
 }
