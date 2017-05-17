@@ -28,6 +28,7 @@
 #include "CommandBuy.h"
 #include "CommandPlay.h"
 #include "CommandForecast.h"
+#include "CommandProduce.h"
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
@@ -35,7 +36,7 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
         BASE_WATER), stock_sugar_(100), stock_lemon_(100), stock_cash_(5000),
         income_(0), expence_(0), balance_(0), price_lemonade_(price_lemonade),
         price_lemon_(price_lemon), price_sugar_(price_sugar),
-        customer_satisfaction_(100), weather_engine_(
+        customer_satisfaction_(100), lemonade_(0), weather_engine_(
             std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine())),
         next_weather_(weather_engine_->createCondition())
 {
@@ -48,6 +49,7 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandBuy()));
   commands_.push_back(std::unique_ptr<Command>(new CommandPlay()));
   commands_.push_back(std::unique_ptr<Command>(new CommandForecast()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandProduce()));
 }
 
 //------------------------------------------------------------------------------

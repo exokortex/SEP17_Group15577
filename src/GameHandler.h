@@ -195,6 +195,16 @@ class GameHandler
       stock_sugar_ = stockSugar;
     }
 
+    inline int getLemonade() const
+    {
+      return lemonade_;
+    }
+
+    inline void setLemonade(int lemonade)
+    {
+      lemonade_ = lemonade;
+    }
+
   private:
     //--------------------------------------------------------------------------
     // The base lemonade sugar
@@ -280,6 +290,11 @@ class GameHandler
     // Customer satisfaction
     //
     int customer_satisfaction_;
+
+    //--------------------------------------------------------------------------
+    // Customer satisfaction
+    //
+    int lemonade_;
 
     //--------------------------------------------------------------------------
     // The weather engine
