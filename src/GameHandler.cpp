@@ -239,6 +239,9 @@ void GameHandler::play()
   // generate weather for next round
   next_weather_ = weather_engine_->createCondition(*next_weather_);
 
+  // reset lemonade for next round
+  lemonade_ = 0;
+
   // reset expence for next round of buying
   expence_ = 0;
 }
