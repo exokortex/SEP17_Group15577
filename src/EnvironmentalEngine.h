@@ -53,7 +53,7 @@ class EnvironmentalEngine
     // values based on the previous.
     // @param previous_condition the previous Environmental condition
     //
-    std::unique_ptr<EnvironmentalCondition> getConditionMin(
+    static std::unique_ptr<EnvironmentalCondition> getConditionMin(
         EnvironmentalCondition& previous_condition);
 
     //--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ class EnvironmentalEngine
     // values based on the previous.
     // @param previous_condition the previous Environmental condition
     //
-    std::unique_ptr<EnvironmentalCondition> getConditionMax(
+    static std::unique_ptr<EnvironmentalCondition> getConditionMax(
         EnvironmentalCondition& previous_condition);
 
   private:
