@@ -30,12 +30,21 @@
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
-    recipe_lemon_(BASE_LEMON), recipe_sugar_(BASE_SUGAR), recipe_water_(
-        BASE_WATER), stock_sugar_(100), stock_lemon_(100), stock_cash_(5000), income_(
-        0), expence_(0), balance_(0), price_lemonade_(price_lemonade), price_lemon_(
-        price_lemon), price_sugar_(price_sugar), weather_engine_(
-        std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine())), next_weather_(
-        weather_engine_->createCondition())
+    recipe_lemon_(BASE_LEMON),
+    recipe_sugar_(BASE_SUGAR),
+    recipe_water_(BASE_WATER),
+    stock_sugar_(100),
+    stock_lemon_(100),
+    stock_cash_(5000),
+    income_( 0),
+    expence_(0),
+    balance_(0),
+    price_lemonade_(price_lemonade),
+    price_lemon_(price_lemon),
+    price_sugar_(price_sugar),
+    weather_engine_(
+        std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine())),
+    next_weather_(weather_engine_->createCondition())
 {
   commands_.push_back(std::unique_ptr<Command>(new CommandEcho()));
   commands_.push_back(std::unique_ptr<Command>(new CommandQuit()));

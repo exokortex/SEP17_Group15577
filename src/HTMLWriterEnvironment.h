@@ -45,7 +45,8 @@ class HTMLWriterEnvironment: HTMLWriter
     //--------------------------------------------------------------------------
     // Private assignment operator
     //
-    HTMLWriterEnvironment& operator=(const HTMLWriterEnvironment& original) = delete;
+    HTMLWriterEnvironment& operator=(const HTMLWriterEnvironment& original)
+       = delete;
 };
 
 #endif /* HTMLWRITERENVIRONMENT_H_INCLUDED */

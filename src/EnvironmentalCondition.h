@@ -198,7 +198,8 @@ class EnvironmentalCondition
     //--------------------------------------------------------------------------
     // Private assignment operator
     //
-    EnvironmentalCondition& operator=(const EnvironmentalCondition& original) = delete;
+    EnvironmentalCondition& operator=(const EnvironmentalCondition& original)
+      = delete;
 };
 
 #endif /* ENVIRONMENTALCONDITION_H_INCLUDED */

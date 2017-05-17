@@ -50,7 +50,8 @@ class EnvironmentalEngine
     //--------------------------------------------------------------------------
     // Private assignment operator
     //
-    EnvironmentalEngine& operator=(const EnvironmentalEngine& original) = delete;
+    EnvironmentalEngine& operator=(const EnvironmentalEngine& original)
+       = delete;
 };
 
 #endif /* ENVIRONMENTALENGINE_H_INCLUDED */
