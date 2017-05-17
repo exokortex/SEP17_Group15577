@@ -190,25 +190,7 @@ void GameHandler::play()
   int sells = ceil(customers * sell_factor / 100.
       * customer_satisfaction_ / 100.);
   //find next |4 value for consumption
-  int consumption = sells;
-  while (consumption % 4 != 0)
-    consumption++;
-
-  //consumption
-  int needed_sugar;
-  int needed_lemon;
-  while ((needed_sugar = consumption * recipe_sugar_ / 2) > stock_sugar_)
-  {
-    consumption -= 4;
-  }
-  while ((needed_lemon = consumption * recipe_lemon_ / 3) > stock_lemon_)
-  {
-    consumption -= 4;
-  }
-
-  // recalculate sugar in case of consumption change through lemon
-  needed_sugar = consumption * recipe_sugar_ / 2;
-
+  int consumption = lemonade_;
 
   //calculate customer satisfaction
   if(consumption <= sells)
@@ -231,8 +213,6 @@ void GameHandler::play()
 
   // update the stock
   stock_cash_ += income_;
-  stock_sugar_ -= needed_sugar;
-  stock_lemon_ -= needed_lemon;
 
   // update the html files
   viewUpdateBalance();
