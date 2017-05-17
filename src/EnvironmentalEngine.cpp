@@ -111,11 +111,13 @@ std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::getConditionMax(
 {
   EnvironmentalCondition::Cover sky_cover = previous_condition.getSkyCover();
   sky_cover = EnvironmentalCondition::Cover(
-      std::min(sky_cover + 1, EnvironmentalCondition::COVER_SIZE));
+      std::min(sky_cover + 1,
+          static_cast<int>(EnvironmentalCondition::COVER_SIZE)));
 
   EnvironmentalCondition::Rank precipit = previous_condition.getPrecipitation();
   precipit = EnvironmentalCondition::Rank(
-      std::min(precipit + 1, EnvironmentalCondition::RANK_SIZE));
+      std::min(precipit + 1,
+          static_cast<int>(EnvironmentalCondition::RANK_SIZE)));
 
   float temperature = previous_condition.getTemperature();
   temperature = std::min(static_cast<float>(EnvironmentalCondition::TEMP_MAX),
@@ -123,7 +125,7 @@ std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::getConditionMax(
 
   EnvironmentalCondition::Rank wind = previous_condition.getWind();
   wind = EnvironmentalCondition::Rank(
-      std::min(wind + 1, EnvironmentalCondition::RANK_SIZE));
+      std::min(wind + 1, static_cast<int>(EnvironmentalCondition::RANK_SIZE)));
 
   std::unique_ptr<EnvironmentalCondition> condition(
       new EnvironmentalCondition(sky_cover, precipit, temperature, wind));

@@ -73,6 +73,11 @@ class GameHandler
     //
     void setNextWeather(std::unique_ptr<EnvironmentalCondition> next_weather);
 
+    inline std::unique_ptr<EnvironmentalCondition> getNextWeather() const
+    {
+      return next_weather_;
+    }
+
     inline int getBalance() const
     {
       return balance_;
