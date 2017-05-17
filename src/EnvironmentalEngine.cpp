@@ -23,6 +23,32 @@ EnvironmentalEngine::EnvironmentalEngine()
 }
 
 //------------------------------------------------------------------------------
+std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::createCondition()
+{
+  // Generate and return random condition
+  EnvironmentalCondition::Cover sky_cover = EnvironmentalCondition::Cover(
+      rand() % EnvironmentalCondition::COVER_SIZE);
+
+  EnvironmentalCondition::Rank precipit = EnvironmentalCondition::Rank(
+      rand() % EnvironmentalCondition::RANK_SIZE);
+
+  float temperature = static_cast<float>(rand()
+      % static_cast<int>(
+          EnvironmentalCondition::TEMP_MAX * TEMP_DECIMAL_PRECISION
+          - EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION + 1)
+      + EnvironmentalCondition::TEMP_MIN * TEMP_DECIMAL_PRECISION)
+          / TEMP_DECIMAL_PRECISION;
+
+  EnvironmentalCondition::Rank wind = EnvironmentalCondition::Rank(
+      rand() % EnvironmentalCondition::RANK_SIZE);
+
+  std::unique_ptr<EnvironmentalCondition> condition(
+      new EnvironmentalCondition(sky_cover, precipit, temperature, wind));
+
+  return condition;
+}
+
+//------------------------------------------------------------------------------
 std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::createCondition(
     EnvironmentalCondition& previous_condition)
 {

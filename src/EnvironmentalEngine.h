@@ -37,6 +37,11 @@ class EnvironmentalEngine
     EnvironmentalEngine();
 
     //--------------------------------------------------------------------------
+    // Creates a new random Environmental condition.
+    //
+    std::unique_ptr<EnvironmentalCondition> createCondition();
+
+    //--------------------------------------------------------------------------
     // Creates a new random Environmental condition based on the previous.
     // @param previous_condition the previous Environmental condition
     //
