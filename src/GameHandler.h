@@ -277,6 +277,11 @@ class GameHandler
     int price_sugar_;
 
     //--------------------------------------------------------------------------
+    // Customer satisfaction
+    //
+    int customer_satisfaction_;
+
+    //--------------------------------------------------------------------------
     // The weather engine
     //
     std::unique_ptr<EnvironmentalEngine> weather_engine_;
