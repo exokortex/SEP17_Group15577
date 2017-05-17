@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// CommandWrite.cpp
+// CommandSave.cpp
 //
 // Group: Group 15577, study assistant Roman Walch
 //
@@ -17,7 +17,6 @@
 #include "CommandSave.h"
 #include "Command.h"
 #include "GameHandler.h"
-#include "StringUtil.h"
 
 const string CommandSave::NAME = "save";
 const string CommandSave::USAGE_STRING = "[ERR] Usage: save <filename>\n";
