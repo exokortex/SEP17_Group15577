@@ -17,8 +17,7 @@
 #include "GameHandler.h"
 
 const string CommandQuote::NAME = "quote";
-const string CommandQuote::USAGE_STRING =
-    "[ERR] Usage: quote\n";
+const string CommandQuote::USAGE_STRING = "[ERR] Usage: quote\n";
 
 //------------------------------------------------------------------------------
 CommandQuote::CommandQuote() :
@@ -35,10 +34,8 @@ int CommandQuote::execute(GameHandler& game, vector<string>& params)
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
   std::ostringstream out;
-  {
-    out << "L: "<<game.getPriceLemon()<<" $\n";
-    out << "S: "<<game.getPriceSugar()<<" $\n";
-  }
+  out << "L: " << game.getPriceLemon() << " $\n";
+  out << "S: " << game.getPriceSugar() << " $\n";
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;
 }

@@ -34,13 +34,11 @@ int CommandBalance::execute(GameHandler& game, vector<string>& params)
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
   std::ostringstream out;
-  {
-    out << "L: " << game.getStockLemon() << "\n";
-    out << "S: " << game.getStockSugar() << "\n";
-    out << "----------\n";
-    out << "C: " << game.getStockCash() << " $\n";
-    out << "B: " << game.getBalance() << " $\n";
-  }
+  out << "L: " << game.getStockLemon() << "\n";
+  out << "S: " << game.getStockSugar() << "\n";
+  out << "----------\n";
+  out << "C: " << game.getStockCash() << " $\n";
+  out << "B: " << game.getBalance() << " $\n";
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;
 }
