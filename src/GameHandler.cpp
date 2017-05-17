@@ -29,6 +29,7 @@
 #include "CommandPlay.h"
 #include "CommandForecast.h"
 #include "CommandProduce.h"
+#include "CommandSave.h"
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
@@ -50,6 +51,7 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandPlay()));
   commands_.push_back(std::unique_ptr<Command>(new CommandForecast()));
   commands_.push_back(std::unique_ptr<Command>(new CommandProduce()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandSave()));
 }
 
 //------------------------------------------------------------------------------

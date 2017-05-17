@@ -9,8 +9,9 @@
 //------------------------------------------------------------------------------
 //
 
+#include <algorithm>
+
 #include "EnvironmentalCondition.h"
-#include <ctype.h>
 
 //------------------------------------------------------------------------------
 EnvironmentalCondition::EnvironmentalCondition(Cover sky_cover,
@@ -68,7 +69,7 @@ string EnvironmentalCondition::getSkyCoverString()
 string EnvironmentalCondition::getSkyCoverStringUpper()
 {
   string text = getSkyCoverString();
-  std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+  transform(text.begin(), text.end(), text.begin(), ::toupper);
   return text;
 }
 
