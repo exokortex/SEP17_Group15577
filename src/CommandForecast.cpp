@@ -49,8 +49,8 @@ int CommandForecast::execute(GameHandler& game, vector<string>& params)
     out << "Sky coverage will be between ";
     out << minima->getSkyCoverString() << " and ";
     out << maxima->getSkyCoverString() << std::endl;
-    out << "Wind will be between ";
-    out << minima->getWindString() << " and ";
+    out << "We expect wind to be from ";
+    out << minima->getWindString() << " to ";
     out << maxima->getWindString() << std::endl;
   }
   game.output(out.str());
