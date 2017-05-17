@@ -27,6 +27,7 @@
 #include "CommandSetweather.h"
 #include "CommandBuy.h"
 #include "CommandPlay.h"
+#include "CommandForecast.h"
 
 //------------------------------------------------------------------------------
 GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
@@ -45,6 +46,7 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
   commands_.push_back(std::unique_ptr<Command>(new CommandSetweather()));
   commands_.push_back(std::unique_ptr<Command>(new CommandBuy()));
   commands_.push_back(std::unique_ptr<Command>(new CommandPlay()));
+  commands_.push_back(std::unique_ptr<Command>(new CommandForecast()));
 }
 
 //------------------------------------------------------------------------------
@@ -57,6 +59,11 @@ void GameHandler::setNextWeather(
     std::unique_ptr<EnvironmentalCondition> next_weather)
 {
   next_weather_ = std::move(next_weather);
+}
+
+EnvironmentalCondition& GameHandler::getNextWeather()
+{
+  return *next_weather_;
 }
 
 //------------------------------------------------------------------------------
