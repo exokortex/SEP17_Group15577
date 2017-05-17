@@ -161,14 +161,15 @@ void GameHandler::play()
 
   int customers = 500;
 
-  if (next_weather_->isItHot())
-    customers = round(customers * 1.5);
-  else if (next_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
-    customers = round(customers * 0.8);
+  // select worst customer factor
+  if (next_weather_->isItStormy())
+    customers = round(customers * 0.1);
   else if (next_weather_->isItRainy())
     customers = round(customers * 0.5);
-  else if (next_weather_->isItStormy())
-    customers = round(customers * 0.1);
+  else if (next_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
+    customers = round(customers * 0.8);
+  else if (next_weather_->isItHot())
+    customers = round(customers * 1.5);
 
   //consumption
 
