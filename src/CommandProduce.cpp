@@ -45,6 +45,20 @@ int CommandProduce::execute(GameHandler& game, vector<string>& params)
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
 
+  int needed_sugar = lemonade * game.getRecipeSugar() / 2;
+  int needed_lemon = lemonade * game.getRecipeSugar() / 3;
+
+  // if the production cannot satisfied -> invalid parameter
+  if (needed_sugar > game.getStockSugar()
+      || needed_lemon > game.getStockLemon())
+  {
+    game.output(ERROR_WRONG_PARAM);
+    return Command::EXECUTION_RESULT_NO_SUCCESS;
+  }
+
+  game.setStockSugar(game.getStockSugar() - needed_sugar);
+  game.setStockLemon(game.getStockLemon() - needed_lemon);
+
   game.setLemonade(game.getLemonade() + lemonade);
 
   return Command::EXECUTION_RESULT_SUCCESS;
