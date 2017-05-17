@@ -28,4 +28,5 @@ CommandForecast::CommandForecast() :
 //------------------------------------------------------------------------------
 int CommandForecast::execute(GameHandler& game, vector<string>& params)
 {
+
 }
