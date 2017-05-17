@@ -48,6 +48,22 @@ bool EnvironmentalCondition::isItStormy()
 }
 
 //------------------------------------------------------------------------------
+string EnvironmentalCondition::getSkyCoverString()
+{
+  switch (sky_cover_) {
+    case EnvironmentalCondition::VERY_OVERCAST:
+      return "very overcast";
+    case EnvironmentalCondition::OVERCAST:
+      return "overcast";
+    case EnvironmentalCondition::CLOUDY:
+      return "cloudy";
+    case EnvironmentalCondition::SUNNY:
+      return "sunny";
+  }
+  return "";
+}
+
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::getWindString()
 {
   return rankToString(wind_);

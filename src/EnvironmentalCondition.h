@@ -111,6 +111,12 @@ class EnvironmentalCondition
     bool isItStormy();
 
     //--------------------------------------------------------------------------
+    // getSkyCoverString
+    // @return Returns the sky cover condition as string
+    //
+    string getSkyCoverString();
+
+    //--------------------------------------------------------------------------
     // getWindString
     // @return Returns the wind condition as string
     //
