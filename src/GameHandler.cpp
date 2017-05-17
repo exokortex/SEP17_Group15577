@@ -209,7 +209,7 @@ void GameHandler::play()
   viewUpdateEnvironment();
 
   // generate weather for next round
-  next_weather_ = weather_engine_->createCondition();
+  next_weather_ = weather_engine_->createCondition(*next_weather_);
 
   // reset expence for next round of buying
   expence_ = 0;
