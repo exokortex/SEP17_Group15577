@@ -26,38 +26,80 @@ EnvironmentalEngine::EnvironmentalEngine()
 std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::createCondition(
     EnvironmentalCondition& previous_condition)
 {
-  // Generate and return random condition
-  int generator_min;
-  int generator_max;
+  // Generate and return random condition based on current min and max ranges
+  std::unique_ptr<EnvironmentalCondition> minima
+    = getConditionMin(previous_condition);
+  std::unique_ptr<EnvironmentalCondition> maxima
+    = getConditionMax(previous_condition);
 
+  EnvironmentalCondition::Cover sky_cover = EnvironmentalCondition::Cover(
+      rand() % (maxima->getSkyCover() - minima->getSkyCover() + 1)
+      + minima->getSkyCover());
+
+  EnvironmentalCondition::Rank precipit = EnvironmentalCondition::Rank(
+      rand() % (maxima->getPrecipitation() - minima->getPrecipitation() + 1)
+      + minima->getPrecipitation());
+
+  float temperature = static_cast<float>(rand()
+      % static_cast<int>(maxima->getTemperature() * TEMP_DECIMAL_PRECISION
+          - minima->getTemperature() * TEMP_DECIMAL_PRECISION + 1)
+      + minima->getTemperature() * TEMP_DECIMAL_PRECISION)
+          / TEMP_DECIMAL_PRECISION;
+
+  EnvironmentalCondition::Rank wind = EnvironmentalCondition::Rank(rand() %
+      (maxima->getWind() - minima->getWind() + 1) + minima->getWind());
+
+  std::unique_ptr<EnvironmentalCondition> condition(
+      new EnvironmentalCondition(sky_cover, precipit, temperature, wind));
+
+  return condition;
+}
+
+//------------------------------------------------------------------------------
+std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::getConditionMin(
+    EnvironmentalCondition& previous_condition)
+{
   EnvironmentalCondition::Cover sky_cover = previous_condition.getSkyCover();
-  generator_min = std::max(0, sky_cover - 1);
-  generator_max = std::min(sky_cover + 1, EnvironmentalCondition::COVER_SIZE);
-  sky_cover = EnvironmentalCondition::Cover(rand() %
-      (generator_max - generator_min + 1) + generator_min);
+  sky_cover = EnvironmentalCondition::Cover(std::max(0, sky_cover - 1));
+
+  EnvironmentalCondition::Rank precipitation
+    = previous_condition.getPrecipitation();
+  precipitation = EnvironmentalCondition::Rank(std::max(0, precipitation - 1));
+
+  float temperature = previous_condition.getTemperature();
+  temperature = std::max(static_cast<float>(
+      EnvironmentalCondition::TEMP_MIN), temperature - 5);
+
+  EnvironmentalCondition::Rank wind = previous_condition.getWind();
+  wind = EnvironmentalCondition::Rank(std::max(0, wind - 1));
+
+  std::unique_ptr<EnvironmentalCondition> condition(
+      new EnvironmentalCondition(sky_cover, precipitation, temperature, wind));
+
+  return condition;
+}
+
+//------------------------------------------------------------------------------
+std::unique_ptr<EnvironmentalCondition> EnvironmentalEngine::getConditionMax(
+    EnvironmentalCondition& previous_condition)
+{
+  EnvironmentalCondition::Cover sky_cover
+    = previous_condition.getSkyCover();
+  sky_cover = EnvironmentalCondition::Cover(
+      std::min(sky_cover + 1, EnvironmentalCondition::COVER_SIZE));
 
   EnvironmentalCondition::Rank precipit
     = previous_condition.getPrecipitation();
-  generator_min = std::max(0, precipit - 1);
-  generator_max = std::min(precipit + 1, EnvironmentalCondition::RANK_SIZE);
-  precipit = EnvironmentalCondition::Rank(rand() %
-      (generator_max - generator_min + 1) + generator_min);
+  precipit = EnvironmentalCondition::Rank(
+      std::min(precipit + 1, EnvironmentalCondition::RANK_SIZE));
 
   float temperature = previous_condition.getTemperature();
-  float temp_max = std::min(static_cast<float>(
-        EnvironmentalCondition::TEMP_MAX), temperature + 5);
-  float temp_min = std::max(static_cast<float>(
-        EnvironmentalCondition::TEMP_MIN), temperature - 5);
-  temperature = static_cast<float>(rand()
-      % static_cast<int>(temp_max * TEMP_DECIMAL_PRECISION
-          - temp_min * TEMP_DECIMAL_PRECISION + 1)
-      + temp_min * TEMP_DECIMAL_PRECISION) / TEMP_DECIMAL_PRECISION;
+  temperature = std::min(static_cast<float>(
+      EnvironmentalCondition::TEMP_MAX), temperature + 5);
 
   EnvironmentalCondition::Rank wind = previous_condition.getWind();
-    generator_min = std::max(0, wind - 1);
-    generator_max = std::min(wind + 1, EnvironmentalCondition::RANK_SIZE);
-    wind = EnvironmentalCondition::Rank(rand() %
-        (generator_max - generator_min + 1) + generator_min);
+  wind = EnvironmentalCondition::Rank(
+      std::min(wind + 1, EnvironmentalCondition::RANK_SIZE));
 
   std::unique_ptr<EnvironmentalCondition> condition(
       new EnvironmentalCondition(sky_cover, precipit, temperature, wind));

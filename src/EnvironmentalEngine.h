@@ -43,6 +43,22 @@ class EnvironmentalEngine
     std::unique_ptr<EnvironmentalCondition> createCondition(
         EnvironmentalCondition& previous_condition);
 
+    //--------------------------------------------------------------------------
+    // Creates an Environmental condition with the minimum possible
+    // values based on the previous.
+    // @param previous_condition the previous Environmental condition
+    //
+    std::unique_ptr<EnvironmentalCondition> getConditionMin(
+        EnvironmentalCondition& previous_condition);
+
+    //--------------------------------------------------------------------------
+    // Creates an Environmental condition with the maximum possible
+    // values based on the previous.
+    // @param previous_condition the previous Environmental condition
+    //
+    std::unique_ptr<EnvironmentalCondition> getConditionMax(
+        EnvironmentalCondition& previous_condition);
+
   private:
     //--------------------------------------------------------------------------
     // Private copy constructor
