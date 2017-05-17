@@ -129,6 +129,24 @@ class EnvironmentalCondition
     string getPrecipitationString();
 
     //--------------------------------------------------------------------------
+    // getSkyCoverStringUpper
+    // @return Returns the sky cover condition as string in uppercase
+    //
+    string getSkyCoverStringUpper();
+
+    //--------------------------------------------------------------------------
+    // getWindStringUpper
+    // @return Returns the wind condition as string in uppercase
+    //
+    string getWindStringUpper();
+
+    //--------------------------------------------------------------------------
+    // getPrecipitationStringUpper
+    // @return Returns the precipitation condition as string in uppercase
+    //
+    string getPrecipitationStringUpper();
+
+    //--------------------------------------------------------------------------
     // rankToString
     // @return Converts the given rank to a human-readable string
     // @param rank the rank to convert

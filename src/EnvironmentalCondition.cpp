@@ -10,6 +10,7 @@
 //
 
 #include "EnvironmentalCondition.h"
+#include <ctype.h>
 
 //------------------------------------------------------------------------------
 EnvironmentalCondition::EnvironmentalCondition(Cover sky_cover,
@@ -64,15 +65,39 @@ string EnvironmentalCondition::getSkyCoverString()
 }
 
 //------------------------------------------------------------------------------
+string EnvironmentalCondition::getSkyCoverStringUpper()
+{
+  string text = getSkyCoverString();
+  std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+  return text;
+}
+
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::getWindString()
 {
   return rankToString(wind_);
 }
 
 //------------------------------------------------------------------------------
+string EnvironmentalCondition::getWindStringUpper()
+{
+  string text = getWindString();
+  transform(text.begin(), text.end(), text.begin(), ::toupper);
+  return text;
+}
+
+//------------------------------------------------------------------------------
 string EnvironmentalCondition::getPrecipitationString()
 {
   return rankToString(precipitation_);
+}
+
+//------------------------------------------------------------------------------
+string EnvironmentalCondition::getPrecipitationStringUpper()
+{
+  string text = getPrecipitationString();
+  transform(text.begin(), text.end(), text.begin(), ::toupper);
+  return text;
 }
 
 //------------------------------------------------------------------------------
