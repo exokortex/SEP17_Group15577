@@ -205,10 +205,9 @@ void GameHandler::play()
   // recalculate sugar in case of consumption change through lemon
   needed_sugar = consumption * recipe_sugar_ / 2;
 
-  sells = std::min(sells, consumption);
 
   //calculate customer satisfaction
-  if(sells <= customers)
+  if(consumption <= sells)
   {
     //all customers were served
     customer_satisfaction_ += 10;
@@ -219,6 +218,8 @@ void GameHandler::play()
     customer_satisfaction_ -= 10;
     customer_satisfaction_ = std::max(10, customer_satisfaction_);
   }
+
+  sells = std::min(sells, consumption);
 
   //calc new income and balance
   income_ = sells * price_lemonade_;
