@@ -166,7 +166,8 @@ void GameHandler::play()
     customers = round(customers * 0.1);
   else if (next_weather_->isItRainy())
     customers = round(customers * 0.5);
-  else if (next_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST)
+  else if (next_weather_->getSkyCover() == EnvironmentalCondition::OVERCAST
+      || next_weather_->getSkyCover() == EnvironmentalCondition::VERY_OVERCAST)
     customers = round(customers * 0.8);
   else if (next_weather_->isItHot())
     customers = round(customers * 1.5);
