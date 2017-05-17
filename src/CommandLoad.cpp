@@ -46,7 +46,12 @@ int CommandLoad::execute(GameHandler& game, vector<string>& params)
     game.output(ERROR_FILE_NOT_OPEN);
     return Command::EXECUTION_RESULT_NO_SUCCESS;
   }
-
+  std::ostringstream out;
+    {
+      out << "L: "<<game.getPriceLemon()<<" $\n";
+      out << "S: "<<game.getPriceSugar()<<" $\n";
+    }
+    game.output(out.str());
   string line;
   while (std::getline(file, line))
   {
