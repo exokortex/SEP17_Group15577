@@ -193,6 +193,9 @@ void GameHandler::play()
     consumption -= 4;
   }
 
+  // recalculate sugar in case of consumption change through lemon
+  needed_sugar = consumption * recipe_sugar_ / 2;
+
   sells = std::min(sells, consumption);
 
   //calc new income and balance
