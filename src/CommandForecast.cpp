@@ -42,7 +42,16 @@ int CommandForecast::execute(GameHandler& game, vector<string>& params)
   {
     out << "Next game weekend, the temperature will be between ";
     out << minima->getTemperature() << " and " << maxima->getTemperature();
-    out << "°C.";
+    out << "°C." << std::endl;
+    out << "The precipitation will be between ";
+    out << minima->getPrecipitationString() << " and ";
+    out << maxima->getPrecipitationString() << std::endl;
+    out << "Sky coverage will be between ";
+    out << minima->getSkyCover() << " and ";
+    out << maxima->getSkyCover() << std::endl;
+    out << "Wind will be between ";
+    out << minima->getWindString() << " and ";
+    out << maxima->getWindString() << std::endl;
   }
   game.output(out.str());
   return Command::EXECUTION_RESULT_SUCCESS;
