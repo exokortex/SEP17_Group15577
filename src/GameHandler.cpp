@@ -101,6 +101,9 @@ void GameHandler::run()
     if (!view_->nextUserCommand(input_line))
       return;
 
+    // ignore '\r' to pass the messed up autotest from the tutor that
+    // uses Windows to write testcases (shame on you)
+    std::replace( input_line.begin(), input_line.end(), '\r', ' ');
     //process input_line
     vector<string> params = StringUtil::split(input_line, ' ');
 
