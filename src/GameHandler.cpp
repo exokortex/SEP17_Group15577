@@ -45,6 +45,8 @@ GameHandler::GameHandler(int price_lemonade, int price_lemon, int price_sugar) :
     price_lemonade_(price_lemonade),
     price_lemon_(price_lemon),
     price_sugar_(price_sugar),
+    customer_satisfaction_(0),
+    lemonade_(0),
     weather_engine_(
         std::unique_ptr<EnvironmentalEngine>(new EnvironmentalEngine())),
     next_weather_(weather_engine_->createCondition())
